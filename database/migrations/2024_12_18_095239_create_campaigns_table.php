@@ -19,6 +19,9 @@ return new class extends Migration
             $table->text('description');
             $table->unsignedBigInteger('target_amount');
             $table->unsignedBigInteger('collected_amount')->default(0);
+            $table->date('start_date')->nullable();
+            $table->date('end_date'); 
+            $table->string('image_path')->nullable(); 
             $table->timestamps();
             $table->foreign('category_id')->references('category_id')->on('categories')->nullOnDelete();
             $table->foreign('user_id')->references('user_id')->on('users')->onDelete('cascade');
