@@ -15,6 +15,7 @@ return new class extends Migration
             $table->uuid('campaign_id')->primary();
             $table->uuid('category_id')->nullable();
             $table->uuid('user_id'); // Pembuat campaign
+            $table->string('slug')->unique();
             $table->string('title');
             $table->text('description');
             $table->unsignedBigInteger('target_amount');
