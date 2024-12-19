@@ -1,39 +1,42 @@
 <!doctype html>
 <html lang="en" data-theme="light">
+
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  @vite('resources/css/app.css')
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <!-- Owl Carousel CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide/dist/css/splide.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide/dist/js/splide.min.js"></script>
+
+
+
+
+    @vite('resources/css/app.css')
+    {{-- @vite('resources/js/app.js') --}}
 </head>
+
 <body>
     {{-- Navbar --}}
-    <header class="bg-blue-500 text-white p-4">
-        <nav class="container mx-auto flex justify-between">
-            <a href="#" class="text-lg font-bold">Logo</a>
-            <ul class="flex items-center">
-                <li class="mr-6">
-                    <a href="#" class="text-white hover:text-gray-300">Home</a>
-                </li>
-                <li class="mr-6">
-                    <a href="#" class="text-white hover:text-gray-300">About</a>
-                </li>
-                <li>
-                    <a href="#" class="text-white hover:text-gray-300">Contact</a>
-                </li>
-            </ul>
-        </nav>
-    </header>
+    {{-- <header class=""> --}}
+    @include('components.navbar')
+    {{-- </header> --}}
     {{-- Navbar End --}}
 
-    <main class="container mx-auto p-4">
+    <main class="container mx-auto lg:p-4 p-0 mb-36">
         @yield('content')
     </main>
 
 
     {{-- Footer --}}
-    <footer class="bg-gray-200 p-4 text-center">
+    {{-- <footer class="bg-gray-200 p-4 text-center">
         <p>&copy; 2024 Bersama Donasi</p>
-    </footer>
+    </footer> --}}
     {{-- Footer End --}}
 </body>
+
 </html>
