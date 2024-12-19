@@ -22,6 +22,7 @@ return new class extends Migration
             $table->date('start_date')->nullable();
             $table->date('end_date'); 
             $table->string('image_path')->nullable(); 
+            $table->boolean('status')->default(true); 
             $table->timestamps();
             $table->foreign('category_id')->references('category_id')->on('categories')->nullOnDelete();
             $table->foreign('user_id')->references('user_id')->on('users')->onDelete('cascade');
