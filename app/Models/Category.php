@@ -43,4 +43,9 @@ class Category extends Model
             }
         });
     }
+
+    public function campaigns()
+    {
+        return $this->hasMany(Campaign::class, 'category_id', 'category_id');
+    }
 }

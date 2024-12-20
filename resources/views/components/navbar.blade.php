@@ -32,7 +32,7 @@
                 </a>
 
                 <!-- Search -->
-                <a href="/Selengkapnya" class="flex flex-col items-center hover:text-gray-200">
+                <a href="/selengkapnya" class="flex flex-col items-center hover:text-gray-200">
                     <i class="fa-solid fa-calendar"></i>
                     <span class="text-sm">Donasi</span>
                 </a>
@@ -46,7 +46,7 @@
                 </a>
 
                 <!-- Profile -->
-                <a href="/Profile" class="flex flex-col items-center hover:text-gray-200"> <i class="fa-solid fa-user"></i>
+                <a href="/profile" class="flex flex-col items-center hover:text-gray-200"> <i class="fa-solid fa-user"></i>
                     <span class="text-sm">Profile</span>
                 </a>
             </div>

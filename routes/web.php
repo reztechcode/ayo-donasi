@@ -7,14 +7,11 @@ use App\Http\Controllers\CampaignController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\UsermanController;
 
-Route::get('/', function () {
-    return view('index');
-});
-
-Route::get('/selengkapnya', [DonasiController::class, 'index'] );
-Route::get('/detail', [DonasiController::class, 'DetailDonasi'] );
+Route::get('/', [DonasiController::class, 'Index'] );
+Route::get('/selengkapnya', [DonasiController::class, 'Selengkapnya'] );
+Route::get('/detail/{slug}', [DonasiController::class, 'DetailDonasi'] );
 Route::get('/tentang-kami', [DonasiController::class, 'TentangKami'] );
-Route::get('/category', [DonasiController::class, 'CategoryDonasi'] );
+Route::get('/category/{id}', [DonasiController::class, 'CategoryDonasi'] );
 
 Route::prefix('admin')->middleware(['admin'])->group(function () {
     Route::resource('userman', UsermanController::class);

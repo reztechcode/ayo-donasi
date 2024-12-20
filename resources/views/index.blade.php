@@ -20,51 +20,60 @@
 
     <div class="flex justify-center items-center mt-6">
         <div class="grid lg:grid-cols-4 grid-cols-2 gap-5 justify-center lg:w-2/3 w-4/5">
-            <div class="card bg-slate-100 p-4 text-center items-center rounded-3xl shadow-xl">
-                <img src="{{ asset('image/zakat.png') }}" alt="" class="mt-2 lg:w-4/5 w-20">
-                <h1 class="font-semibold text-lg"> Zakat </h1>
-            </div>
-            <div class="card bg-slate-100 p-4 text-center items-center rounded-3xl shadow-xl">
-                <img src="{{ asset('image/donastion.png') }}" alt="" class="mt-2 lg:w-4/5 w-20">
-                <h1 class="font-semibold text-lg"> Donasi </h1>
-            </div>
-            <div class="card bg-slate-100 p-4 text-center items-center rounded-3xl shadow-xl">
-                <img src="{{ asset('image/donasi15.png') }}" alt="" class="mt-2 lg:w-4/5 w-20">
-                <h1 class="font-semibold text-lg"> Kesehatan </h1>
-            </div>
-            <div class="card bg-slate-100 p-4 text-center items-center rounded-3xl shadow-xl">
-                <img src="{{ asset('image/gempa.png') }}" alt="" class="mt-2 lg:w-4/5 w-20">
-                <h1 class="font-semibold text-lg"> Bencana </h1>
-            </div>
+            @foreach ($category as $data)
+                <a href="{{ url('category/' . $data->category_id) }}">
+                    <div class="card bg-slate-100 p-4 text-center items-center rounded-3xl shadow-xl">
+                        <img src="{{ asset('storage/' . $data->icon) }}" alt="" class="mt-2 lg:w-4/5 w-20">
+                        <h1 class="font-semibold text-lg"> {{ $data->name }} </h1>
+                    </div>
+                </a>
+            @endforeach
         </div>
     </div>
 
     <div class="lg:rounded-xl md:rounded-none p-3  bg-slate-50 mt-10 lg:shadow shadow-none">
         <div class="flex justify-between">
             <h1 class="font-bold text-lg">Penggalangan Dana</h1>
-            <a href="{{ url('selengkapnya') }}" class="bg-primaryy lg:py-2 lg:px-7 py-1 px-4 text-md text-white rounded-full"> Lihat Lainnya</a>
+            <a href="{{ url('selengkapnya') }}"
+                class="bg-primaryy lg:py-2 lg:px-7 py-1 px-4 text-md text-white rounded-full"> Lihat Lainnya</a>
         </div>
         <div id="splide" class="splide mt-7">
             <div class="splide__track">
                 <ul class="splide__list">
-                    <li class="splide__slide shadow-none">
-                        <a href="#">
-                            <div class="card bg-slate-100 shadow-xl mb-6  lg:h-auto h-auto">
-                                <img src="{{ asset('image/anak.png') }}" alt="" class="rounded-t-3xl lg:h-60 h-40">
-                                <div class="p-4">
-                                    <h1 class="font-semibold lg:text-lg  text-sm  overflow-hidden text-ellipsis whitespace-nowrap">Makan Bergizi Ratusan Anak Kampung Pemulung </h1>
-                                    <h1 class="text-sm mt-4">Data Terkumpul</h1>
-                                    <progress class="progress progress-info w-full" value="70"
-                                        max="100"></progress>
-                                    <h1>Rp 1.015.000</h1>
-                                    <div class="flex justify-between lg:mt-8 mt-4 ">
-                                        <h1 class="font-bold text-sm">30 Donatur</h1>
-                                        <h1 class="font-bold text-sm">23 Hari Lagi</h1>
+                    @foreach ($campaign as $item)
+                        <li class="splide__slide shadow-none">
+                            <a href="{{ url('detail/' . $item->slug )  }}">
+                                <div class="card bg-slate-100 shadow-xl mb-6  lg:h-auto h-auto">
+                                    <img src="{{ asset('storage/' . $item->image_path) }}" alt="Tidak Ada Image"
+                                        class="rounded-t-3xl lg:h-60 h-40">
+                                    <div class="p-4">
+                                        <h1
+                                            class="font-semibold lg:text-lg  text-sm  overflow-hidden text-ellipsis whitespace-nowrap">
+                                            {{ $item->title }} </h1>
+                                        <h1 class="text-sm mt-4">Data Terkumpul</h1>
+                                        @php
+                                            $progress =
+                                                $item->target_amount > 0
+                                                    ? ($item->collected_amount / $item->target_amount) * 100
+                                                    : 0;
+                                        @endphp
+                                        <progress class="progress progress-info w-full" value="{{ $progress }}"
+                                            max="100"></progress>
+
+                                        <div class="flex justify-between ">
+                                            <h1>Rp {{ number_format($item->collected_amount, 0, ',', '.') }}</h1>
+                                            <h1>Rp {{ number_format($item->target_amount, 0, ',', '.') }}</h1>
+                                        </div>
+                                        <div class="flex justify-between lg:mt-8 mt-4 ">
+                                            <h1 class="font-bold text-sm">30 Donatur</h1>
+                                            <h1 class="font-bold text-sm">{{ $item->days_remaining }} Hari Lagi</h1>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </a>
-                    </li>
+                            </a>
+                        </li>
+                    @endforeach
+
                 </ul>
             </div>
         </div>
