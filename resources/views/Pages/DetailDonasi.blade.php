@@ -16,6 +16,8 @@
                 <progress class="progress progress-info w-56" value="{{ $campaign->progress }}" max="100"></progress>
                 <h1 class="mt-2 text-2xl font-bold">Rp {{ number_format($campaign->target_amount, 0, ',', '.') }} <span
                         class="text-sm font-medium"> Terkumpul</span></h1>
+                {{-- <button class="btn" onclick="my_modal_3.showModal()">open modal</button> --}}
+                {{-- <button class="btn rounded-full text-white bg-primaryy mt-4 w-52 hover:bg-sky-500" onclick="my_modal_3.showModal()">Donasikan</button> --}}
                 <a href="" class="btn rounded-full text-white bg-primaryy mt-4 w-52 hover:bg-sky-500"> Donasikan</a>
                 <a href="" class="btn rounded-full text-white bg-sky-900 mt-4 hover:bg-blue-950 "> Bagikan <i
                         class="fa-solid fa-share-nodes text-lg"></i></a>
@@ -51,10 +53,6 @@
                 </div>
             </div>
         </div>
-
-
-
-
         <div class="hidden lg:block rounded-3xl bg-slate-50 w-full lg:w-4/12 p-4 shadow-lg">
             <h1 class="font-semibold text-center text-lg"> Rincian Penggalangan Dana</h1>
             <h1 class="mt-4 text-md"> Donasi Terkumpul</h1>
@@ -64,7 +62,8 @@
                 Hari Lagi</h1>
             <progress class="progress progress-info w-full mt-3" value="{{ $campaign->progress }}"
                 max="100"></progress>
-            <a href="" class="btn rounded-full text-white bg-primaryy mt-4 w-52 hover:bg-sky-500"> Donasikan</a>
+            <a href="#" class="btn rounded-full text-white bg-primaryy mt-4 w-52 hover:bg-sky-500"
+                onclick="my_modal_3.showModal()"> Donasikan</a>
             <a href="" class="btn rounded-full text-white bg-sky-900 mt-4 hover:bg-blue-950 "> Bagikan <i
                     class="fa-solid fa-share-nodes text-lg"></i></a>
             <h1 class="mt-6 font-semibold"> Donatur : </h1>
@@ -112,7 +111,7 @@
             <h1 class="font-bold"> Kamu Juga Bisa Bantu :</h1>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mt-4 gap-7">
                 @foreach ($campaigns as $item)
-                    <a href="{{ url('detail/' . $item->slug)}}">
+                    <a href="{{ url('detail/' . $item->slug) }}">
                         <div class="flex bg-slate-50 shadow-xl rounded-2xl gap-0">
                             <img src="{{ asset('storage/' . $item->image_path) }}" alt=""
                                 class="rounded-3xl w-32 h-36 lg:w-36 lg:h-44 p-4">
@@ -136,4 +135,35 @@
             </div>
         </div>
     </div>
+    <!-- Modal  -->
+    <dialog id="my_modal_3" class="modal">
+        <div class="modal-box">
+            <form method="dialog">
+                <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+            </form>
+            <h3 class="text-lg font-bold text-center mt-5 mb-3"> Silahkan Masukan Nominal Donasi  </h3>
+            <div class="grid grid-cols-1">
+                <div class="flex flex-col mt-4">
+                    <label for="" class="text-semibold"> Nominal : </label>
+                    <input type="number" name="" id=""
+                        class="bg-slate-100 rounded-2xl p-2 focus:outline-none mt-2 focus:ring-2 focus:ring-slate-300 focus:border-slate-300"
+                        placeholder="Masukan Nominal ....">
+                </div>
+                <div class="flex flex-col mt-4">
+                    <label for="" class="text-semibold"> Pesan : </label>
+                    <input type="text" name="" id=""
+                        class="bg-slate-100 rounded-2xl mt-2  p-2 focus:outline-none focus:ring-2 focus:ring-slate-300 focus:border-slate-300"
+                        placeholder="Masukan Pesan">
+                </div>
+                <div class="mt-4 text-medium flex gap-2">
+                    <input type="checkbox" class="toggle border-primaryy border-2 bg-primaryy hover:bg-primaryy"
+                        checked="checked" />
+                    <h1 class="text-xs"> *Tampilkan Nama Anda</h1>
+                </div>
+                <div class="mt-4 flex justify-end">
+                    <button type="submit" class="btn bg-primaryy text-white rounded-full hover:bg-sky-700"> Lanjutkan</button>
+                </div>
+            </div>
+        </div>
+    </dialog>
 @endsection

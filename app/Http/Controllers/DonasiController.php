@@ -91,4 +91,12 @@ class DonasiController extends Controller
         $campaign = $category->campaigns;
         return view('Pages.CategoryDonasi', compact('category', 'campaign'));
     }
+    public function ProfileDonasi()
+    {
+        return view('Pages.Profile');
+    }
+    public function DetailPayment()
+    {
+        return view('Pages.DetailPayment');
+    }
 }

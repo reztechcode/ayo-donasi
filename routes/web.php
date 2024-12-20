@@ -14,6 +14,8 @@ Route::get('/selengkapnya', [DonasiController::class, 'Selengkapnya'] );
 Route::get('/detail/{slug}', [DonasiController::class, 'DetailDonasi'] );
 Route::get('/tentang-kami', [DonasiController::class, 'TentangKami'] );
 Route::get('/category/{id}', [DonasiController::class, 'CategoryDonasi'] );
+Route::get('/profile', [DonasiController::class, 'ProfileDonasi'] );
+Route::get('/detailpayment', [DonasiController::class, 'DetailPayment'] );
 
 Route::prefix('admin')->middleware(['admin'])->group(function () {
     Route::resource('userman', UsermanController::class);
