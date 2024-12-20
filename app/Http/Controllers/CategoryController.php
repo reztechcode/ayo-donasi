@@ -58,8 +58,8 @@ class CategoryController extends Controller
      */
     public function edit(string $id)
     {
-        $categories = Category::findOrFail($id);
-        return view('admin.category.edit', compact('categories') );
+        $category = Category::findOrFail($id);
+        return view('admin.category.edit', compact('category') );
     }
 
     /**
@@ -76,7 +76,7 @@ class CategoryController extends Controller
             ]);
             if ($request->hasFile('icon')) {
                 $iconPath = $request->file('icon')->store('icons', 'public');
-                $category->icon_path = $iconPath;
+                $category->icon = $iconPath;
             }
             $category->name = $validatedData['name'];
             $category->description = $validatedData['description'];
