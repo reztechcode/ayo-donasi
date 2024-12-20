@@ -3,19 +3,19 @@
         <!-- Logo dan Judul -->
         <div class="flex items-center ">
             <img src="{{ asset('image/download (1).png') }}" alt="" class="h-12 w-12 rounded-full">
-            <a href="/" class="text-xl font-bold py-2 px-4">Ayo Donasi</a>
+            <a href="{{ url('/') }}" class="text-xl font-bold py-2 px-4">Ayo Donasi</a>
         </div>
 
         <!-- Menu Navigasi -->
         <div id="menu" class="hidden md:flex space-x-2 text-white font-bold">
-            <a href="/" class="hover:bg-slate-200 hover:text-sky-950 hover:rounded-full py-2 px-4">Beranda</a>
-            <a href="/Tentangkami" class="hover:bg-slate-200 hover:text-sky-950 hover:rounded-full py-2 px-4">Tentang Kami</a>
+            <a href="{{ url('/') }}"class="hover:bg-slate-200 hover:text-sky-950 hover:rounded-full py-2 px-4">Beranda</a>
+            <a href="{{ url('tentang-kami') }}" class="hover:bg-slate-200 hover:text-sky-950 hover:rounded-full py-2 px-4">Tentang Kami</a>
         </div>
 
         <!-- Tombol Login dan Daftar -->
         <div class="space-x-3  hidden  md:flex">
-            <a href="/login" class="py-2 px-4 text-md w-24 text-center text-white rounded-full font-semibold">Login</a>
-            <a href="/Daftar" class="bg-sky-900 py-2 px-4 w-32 text-center text-md text-white shadow-xl rounded-full font-semibold">
+            <a href="{{ url('/auth/login') }}" class="py-2 px-4 text-md w-24 text-center text-white rounded-full font-semibold">Login</a>
+            <a href="#register" class="bg-sky-900 py-2 px-4 w-32 text-center text-md text-white shadow-xl rounded-full font-semibold">
                 Daftar <i class="fa-solid fa-user"></i>
             </a>
         </div>

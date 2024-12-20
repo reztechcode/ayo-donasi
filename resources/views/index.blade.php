@@ -42,7 +42,7 @@
     <div class="lg:rounded-xl md:rounded-none p-3  bg-slate-50 mt-10 lg:shadow shadow-none">
         <div class="flex justify-between">
             <h1 class="font-bold text-lg">Penggalangan Dana</h1>
-            <a href="/Selengkapnya" class="bg-primaryy lg:py-2 lg:px-7 py-1 px-4 text-md text-white rounded-full"> Lihat Lainnya</a>
+            <a href="{{ url('selengkapnya') }}" class="bg-primaryy lg:py-2 lg:px-7 py-1 px-4 text-md text-white rounded-full"> Lihat Lainnya</a>
         </div>
         <div id="splide" class="splide mt-7">
             <div class="splide__track">
