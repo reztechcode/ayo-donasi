@@ -42,7 +42,7 @@
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.7V11c0-3.5-2-5-4-5m-1 0c0 3.5-2 5-4 5v3.7c0 .17.005.338.014.506L5 17h5" />
                     </svg>
-                    <span class="text-sm">Beranda</span>
+                    <span class="text-sm">Donasiku</span>
                 </a>
 
                 <!-- Profile -->
