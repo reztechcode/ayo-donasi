@@ -11,7 +11,7 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('/selengakapnya', [DonasiController::class, 'index'] );
+Route::get('/selengkapnya', [DonasiController::class, 'index'] );
 Route::get('/detail', [DonasiController::class, 'DetailDonasi'] );
 Route::get('/tentang-kami', [DonasiController::class, 'TentangKami'] );
 Route::get('/category', [DonasiController::class, 'CategoryDonasi'] );
