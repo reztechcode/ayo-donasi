@@ -20,9 +20,9 @@
             Menampilkan Pencarian Untuk: {{ $search }}
         @endif
     </div>
-    <div class="grid lg:grid-cols-3 grid-cols-2 gap-6 lg:px-0 px-3">
+    <div class="grid lg:grid-cols-3 grid-cols-2 lg:gap-6 gap-2 lg:px-0 px-3">
         @foreach ($campaign as $item)
-            <a href="{{ url('detail/' . $item->slug) }}">
+            <a href="{{ url('donasi/' . $item->slug. '/detail') }}">
                 <div class="card bg-slate-50 shadow-xl mb-6">
                     <img src="{{ asset('storage/' . $item->image_path) }}" alt=""
                         class="lg:rounded-t-3xl rounded-t-xl lg:h-60 h-36">

@@ -5,15 +5,19 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CampaignController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\UsermanController;
+use App\Models\Transaksi;
 
 Route::get('/', [DonasiController::class, 'Index'] );
 Route::get('/selengkapnya', [DonasiController::class, 'Selengkapnya'] );
-Route::get('/detail/{slug}', [DonasiController::class, 'DetailDonasi'] );
 Route::get('/tentang-kami', [DonasiController::class, 'TentangKami'] );
 Route::get('/category/{id}', [DonasiController::class, 'CategoryDonasi'] );
 Route::get('/profile', [DonasiController::class, 'ProfileDonasi'] );
-Route::get('/detailpayment', [DonasiController::class, 'DetailPayment'] );
+
+    // Donasi
+Route::get('/donasi/{slug}/detail', [DonasiController::class, 'DetailDonasi'] );
+Route::get('donasi/payment/{id}', [DonasiController::class, 'DetailPayment']);
 
 Route::prefix('admin')->middleware(['admin'])->group(function () {
     Route::resource('userman', UsermanController::class);
@@ -21,7 +25,15 @@ Route::prefix('admin')->middleware(['admin'])->group(function () {
     Route::resource('campaigns', CampaignController::class);
 });
 
+    // Proses Donasi
+Route::post('donasi/payment', [TransaksiController::class, 'berDonasi']);
+Route::post('/donasi/payment/callback', [TransaksiController::class, 'handleCallback']);
+    // Proses Donasi
+
 Route::middleware(['guest'])->group(function () {
     Route::get('auth/login', [AuthController::class, 'showLogin'])->name('login');
     Route::post('auth/login', [AuthController::class, 'authenticate']);
 });
+Route::get('logout', [AuthController::class, 'logout'])->middleware(['auth']);
+
+// Route::get('donasi/payment/{id}', [TransaksiController::class, 'detailTransaksi']);
