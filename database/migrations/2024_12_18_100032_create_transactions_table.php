@@ -15,6 +15,7 @@ return new class extends Migration
             $table->uuid('transaction_id')->primary();
             $table->uuid('donation_id');
             $table->string('midtrans_order_id')->unique();
+            $table->unsignedBigInteger('gross_amount');
             $table->enum('status',['pending','failed','completed'])->default('pending');
             $table->string('response_data');
             $table->foreign('donation_id')->references('donation_id')->on('donations')->onDelete('cascade');

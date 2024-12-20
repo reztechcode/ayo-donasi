@@ -15,6 +15,7 @@ return new class extends Migration
             $table->uuid('donation_id')->primary(); // ID spesifik
             $table->uuid('user_id')->nullable();
             $table->uuid('campaign_id');
+            $table->string('message')->nullable();
             $table->unsignedBigInteger('amount');
             $table->enum('status',['pending','failed','completed'])->default('pending');
             $table->foreign('user_id')->references('user_id')->on('users')->nullOnDelete();
