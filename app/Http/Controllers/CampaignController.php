@@ -41,14 +41,14 @@ class CampaignController extends Controller
             'start_date' => 'nullable|date',
             'end_date' => 'required|date|after_or_equal:start_date',
             'image_path' => 'nullable|image|max:2048',
-            'status' => 'nullable|boolean',
+            'status' => 'required|string|in:on,off',
         ]);
 
         // Mengupload gambar jika ada
         if ($request->hasFile('image_path')) {
             $validated['image_path'] = $request->file('image_path')->store('campaigns', 'public');
         }
-        $validated['status'] = $request->has('status') ? 1 : 0;
+        $validated['status'] = $request->input('status') === 'on' ? 1 : 0;
         $campaign = Campaign::create($validated);
 
         return redirect()->route('campaigns.index')->with('success', 'Campaign berhasil ditambahkan.');
@@ -86,7 +86,7 @@ class CampaignController extends Controller
             'start_date' => 'nullable|date',
             'end_date' => 'required|date|after_or_equal:start_date',
             'image_path' => 'nullable|image|mimes:jpeg,png,jpg|max:2048', // Validasi untuk file gambar
-            // 'status' => 'nullable|boolean',
+            'status' => 'nullable|string|in:on,off',
         ]);
 
         // Cari campaign berdasarkan ID
@@ -107,7 +107,7 @@ class CampaignController extends Controller
                 Storage::disk('public')->delete($campaign->image_path);
             }
         }
-        $validatedData['status'] = $request->has('status') ? 1 : 0;
+        $validated['status'] = $request->input('status') === 'on' ? 1 : 0;
         // Perbarui campaign dengan data yang tervalidasi
         $campaign->update($validatedData);
 

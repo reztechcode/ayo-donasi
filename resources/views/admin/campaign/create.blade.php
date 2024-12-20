@@ -36,7 +36,7 @@
                                 <label for="category_id">Category</label>
                                 <select class="form-control" id="category_id" name="category_id">
                                     @foreach ($categories as $category)
-                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                        <option value="{{ $category->category_id }}">{{ $category->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -66,8 +66,8 @@
                    <div class="form-group">
                      <label for="status">Status</label>
                      <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
-                        <label class="form-check-label" for="flexSwitchCheckDefault">Status Campaign</label>
+                        <input class="form-check-input" type="checkbox" role="switch" id="status" name="status">
+                        <label class="form-check-label" for="status">Status Campaign</label>
                       </div>
                    </div>
                     <div class="form-group mt-3">
