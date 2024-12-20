@@ -11,10 +11,12 @@ use App\Models\Transaksi;
 
 Route::get('/', [DonasiController::class, 'Index'] );
 Route::get('/selengkapnya', [DonasiController::class, 'Selengkapnya'] );
-Route::get('/detail/{slug}', [DonasiController::class, 'DetailDonasi'] );
 Route::get('/tentang-kami', [DonasiController::class, 'TentangKami'] );
 Route::get('/category/{id}', [DonasiController::class, 'CategoryDonasi'] );
 Route::get('/profile', [DonasiController::class, 'ProfileDonasi'] );
+
+    // Donasi
+Route::get('/donasi/{slug}/detail', [DonasiController::class, 'DetailDonasi'] );
 Route::get('donasi/payment/{id}', [DonasiController::class, 'DetailPayment']);
 
 Route::prefix('admin')->middleware(['admin'])->group(function () {
@@ -23,9 +25,11 @@ Route::prefix('admin')->middleware(['admin'])->group(function () {
     Route::resource('campaigns', CampaignController::class);
 });
 
+    // Proses Donasi
 Route::post('donasi/payment', [TransaksiController::class, 'berDonasi']);
-// Route::get('donasi/payment/{id}', [TransaksiController::class, 'detailTransaksi']);
 Route::post('/donasi/payment/callback', [TransaksiController::class, 'handleCallback']);
+
+// Route::get('donasi/payment/{id}', [TransaksiController::class, 'detailTransaksi']);
 
 
 Route::middleware(['guest'])->group(function () {

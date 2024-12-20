@@ -42,7 +42,7 @@
                 <ul class="splide__list">
                     @foreach ($campaign as $item)
                         <li class="splide__slide shadow-none">
-                            <a href="{{ url('detail/' . $item->slug )  }}">
+                            <a href="{{ url('donasi/' . $item->slug. '/detail' )  }}">
                                 <div class="card bg-slate-100 shadow-xl mb-6  lg:h-auto h-auto">
                                     <img src="{{ asset('storage/' . $item->image_path) }}" alt="Tidak Ada Image"
                                         class="rounded-t-3xl lg:h-60 h-40">
