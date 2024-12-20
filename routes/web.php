@@ -5,7 +5,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CampaignController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\UsermanController;
+use App\Models\Transaksi;
 
 Route::get('/', [DonasiController::class, 'Index'] );
 Route::get('/selengkapnya', [DonasiController::class, 'Selengkapnya'] );
@@ -18,6 +20,11 @@ Route::prefix('admin')->middleware(['admin'])->group(function () {
     Route::resource('categories', CategoryController::class);
     Route::resource('campaigns', CampaignController::class);
 });
+
+Route::post('donasi/payment', [TransaksiController::class, 'berDonasi']);
+Route::get('donasi/{id}', [TransaksiController::class, 'detailTransaksi']);
+Route::post('/donasi/payment/callback', [TransaksiController::class, 'handleCallback']);
+
 
 Route::middleware(['guest'])->group(function () {
     Route::get('auth/login', [AuthController::class, 'showLogin'])->name('login');

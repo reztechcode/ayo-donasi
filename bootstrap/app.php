@@ -14,6 +14,10 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->alias([
             'admin' => \App\Http\Middleware\isAdmin::class,
         ]);
+        $middleware->validateCsrfTokens(except: [
+            'donasi*',
+            // '/donasi/payment/callback', // <-- exclude this route
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //

@@ -32,14 +32,8 @@ class Transaksi extends Model
     }
 
     // Relasi ke Donasi
-    public function donasi()
+    public function donation()
     {
-        return $this->belongsTo(Donasi::class, 'donasi_id', 'donasi_id');
+        return $this->belongsTo(Donasi::class, 'donation_id', 'donation_id');
     }
-
-    // Relasi ke User
-    // public function user()
-    // {
-    //     return $this->belongsTo(User::class, 'user_id', 'id');
-    // }
 }
