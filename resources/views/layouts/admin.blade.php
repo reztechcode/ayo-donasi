@@ -11,6 +11,7 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link href="https://cdn.jsdelivr.net/npm/lightbox2@2.11.3/dist/css/lightbox.min.css" rel="stylesheet" />
     <meta name="robots" content="noindex, nofollow">
     @stack('css')
 </head>
@@ -41,6 +42,18 @@
     <script src="{{ asset('assets/js/app.min.js') }}"></script>
     <!-- solar icons -->
     <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lightbox2@2.11.3/dist/js/lightbox.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Tambahkan atribut data-lightbox ke semua gambar dalam konten blog
+            $('#blog-content img').each(function() {
+                // Tambahkan data-lightbox dan id untuk galeri gambar
+                $(this).attr('data-lightbox',
+                'blog-gallery'); // Menambahkan ID 'blog-gallery' untuk semua gambar
+                $(this).attr('alt', $(this).attr('alt') || 'Image'); // Pastikan atribut alt ada
+            });
+        });
+    </script>
     @stack('js')
 </body>
 

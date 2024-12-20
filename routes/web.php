@@ -3,6 +3,7 @@
 use App\Http\Controllers\DonasiController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CampaignController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\UsermanController;
 
@@ -21,8 +22,9 @@ Route::middleware(['guest'])->group(function () {
 });
 
 Route::prefix('admin')->middleware(['admin'])->group(function () {
-    Route::resource('categories', CategoryController::class);
     Route::resource('userman', UsermanController::class);
+    Route::resource('categories', CategoryController::class);
+    Route::resource('campaigns', CampaignController::class);
 });
 
 

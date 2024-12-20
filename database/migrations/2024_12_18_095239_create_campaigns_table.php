@@ -14,14 +14,17 @@ return new class extends Migration
         Schema::create('campaigns', function (Blueprint $table) {
             $table->uuid('campaign_id')->primary();
             $table->uuid('category_id')->nullable();
-            $table->uuid('user_id'); // Pembuat campaign
+            $table->string('slug')->unique();
             $table->string('title');
             $table->text('description');
             $table->unsignedBigInteger('target_amount');
             $table->unsignedBigInteger('collected_amount')->default(0);
+            $table->date('start_date')->nullable();
+            $table->date('end_date'); 
+            $table->string('image_path')->nullable(); 
+            $table->boolean('status')->default(true); 
             $table->timestamps();
             $table->foreign('category_id')->references('category_id')->on('categories')->nullOnDelete();
-            $table->foreign('user_id')->references('user_id')->on('users')->onDelete('cascade');
         });
     }
 

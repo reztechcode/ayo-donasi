@@ -30,9 +30,15 @@
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link {{ request()->is('admin/categories') ? 'active' : '' }}" href="{{ url('admin/categories') }}" aria-expanded="false">
+                    <a class="sidebar-link {{ request()->is('admin/categories*') ? 'active' : '' }}" href="{{ url('admin/categories') }}" aria-expanded="false">
                         <iconify-icon icon="tabler:category"></iconify-icon>
                         <span class="hide-menu">Kategori</span>
+                    </a>
+                </li>                
+                <li class="sidebar-item">
+                    <a class="sidebar-link {{ request()->is('admin/campaigns*') ? 'active' : '' }}" href="{{ url('admin/campaigns') }}" aria-expanded="false">
+                        <img src="{{ asset('assets/icons/campaign.png') }}" alt="" width="25">
+                        <span class="hide-menu">Campaign Donasi</span>
                     </a>
                 </li>                
                 <li class="sidebar-item">

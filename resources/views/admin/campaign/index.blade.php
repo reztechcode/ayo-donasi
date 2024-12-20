@@ -30,11 +30,11 @@
 @endpush
 @section('content')
     <div class="container">
-        <h3 class="mb-3">Daftar Kategori</h3>
+        <h3 class="mb-3">Daftar Campaign / Kampanye Donasi</h3>
         <div class="card">
-            <div class="card-header">Daftar Kategori</div>
+            <div class="card-header">Daftar Donasi</div>
             <div class="card-body">
-                <a href="{{ route('categories.create') }}" class="btn btn-sm btn-primary rounded-3 px-3">Tambah Kategori</a>
+                <a href="{{ route('campaigns.create') }}" class="btn btn-sm btn-primary rounded-3 px-3">Tambah Campaign Donasi</a>
                 @include('components.alert')
                 <div class="table-responsive rounded-3 mt-2">
                     <table class="table table-striped">
@@ -42,28 +42,34 @@
                             <tr>
                                 <th scope="col">No</th>
                                 <th scope="col">Nama Kategori</th>
-                                <th scope="col">Icon</th>
+                                <th scope="col">Image</th>
+                                <th scope="col">Tercapai/Target</th>
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse ($categories as $item)
+                            @forelse ($campaigns as $item)
                             <tr>
                                 <td scope="row">{{ $loop->iteration }}</td>
-                                <td>{{ $item->name }}</td>
+                                <td>{{ $item->title }}</td>
                                 <td>
+                                    <a data-lightbox="blog-cover" href="{{ asset('storage/' . $item->image_path) }}">
                                     <img
-                                    src="{{ asset('storage/' . $item->icon) }}"
+                                    src="{{ asset('storage/' . $item->image_path) }}"
                                     class="img-fluid rounded-top"
-                                    alt="icon-category" width="60" />
+                                    alt="campaign-image" width="60" />
+                                    </a>
+                                </td>
+                                <td>
+                                  {{ 'Rp. '. number_format($item->target_amount, 0, ',', '.') }} / {{ 'Rp. '. number_format($item->collected_amount, 0, ',', '.') }}
                                 </td>
                                 <td>
                                     <div class="row g-1">
                                         <div class="col-auto">
-                                            <a href="{{ route('categories.edit', $item->category_id) }}" class="btn btn-sm rounded-3 px-3 btn-primary">Edit</a>
+                                            <a href="{{ route('campaigns.edit', $item->campaign_id) }}" class="btn btn-sm rounded-3 px-3 btn-primary">Edit</a>
                                         </div>
                                         <div class="col-auto">
-                                            <form action="{{ route('categories.destroy', $item->category_id) }}" method="POST"
+                                            <form action="{{ route('campaigns.destroy', $item->campaign_id) }}" method="POST"
                                                 class="delete-form">
                                                 @csrf
                                                 @method('DELETE')
