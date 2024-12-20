@@ -30,6 +30,7 @@
 @endpush
 @section('content')
     <div class="container">
+        <h3 class="mb-3">Daftar Kategori</h3>
         <div class="card">
             <div class="card-header">Daftar Kategori</div>
             <div class="card-body">
