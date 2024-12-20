@@ -42,20 +42,20 @@
     <div class="lg:rounded-xl md:rounded-none p-3  bg-slate-50 mt-10 lg:shadow shadow-none">
         <div class="flex justify-between">
             <h1 class="font-bold text-lg">Penggalangan Dana</h1>
-            <a href="#" class="bg-primaryy py-2 px-7 text-white rounded-full"> Lihat Lainnya</a>
+            <a href="/Selengkapnya" class="bg-primaryy py-2 px-7 text-white rounded-full"> Lihat Lainnya</a>
         </div>
         <div id="splide" class="splide mt-7">
             <div class="splide__track">
                 <ul class="splide__list">
                     <li class="splide__slide shadow-none">
-                        <a href="#">
+                        <a href="/Detail">
                             <div class="card bg-slate-100 shadow-xl mb-6 lg:h-80 h-72">
                                 <img src="{{ asset('image/3.png') }}" alt="" class="rounded-t-3xl">
                                 <div class="p-4">
                                     <h1 class="font-semibold h-12">Tak Miliki Lubang Anus, Bayi Ojol Menangis Kesakitan!
                                     </h1>
                                     <h1 class="text-sm mt-4">Data Terkumpul</h1>
-                                    <progress class="progress progress-primary w-full" value="70"
+                                    <progress class="progress progress-info w-full" value="70"
                                         max="100"></progress>
                                     <h1>Rp 1.015.000</h1>
                                     <div class="flex justify-between lg:mt-8 mt-4 ">
@@ -73,7 +73,7 @@
                                 <div class="p-4">
                                     <h1 class="font-semibold h-12">Butuh Cicis</h1>
                                     <h1 class="text-sm mt-4">Data Terkumpul</h1>
-                                    <progress class="progress progress-primaryy w-full" value="70"
+                                    <progress class="progress progress-info w-full" value="70"
                                         max="100"></progress>
                                     <h1>Rp 1.015.000</h1>
                                     <div class="flex justify-between lg:mt-8 mt-4 ">
@@ -94,7 +94,7 @@
                                     <h1 class="font-semibold h-12">Tak Miliki Lubang Anus, Bayi Ojol Menangis Kesakitan!
                                     </h1>
                                     <h1 class="text-sm mt-4">Data Terkumpul</h1>
-                                    <progress class="progress progress-primary w-full" value="70"
+                                    <progress class="progress progress-info w-full" value="70"
                                         max="100"></progress>
                                     <h1>Rp 1.015.000</h1>
                                     <div class="flex justify-between lg:mt-8 mt-4 ">
