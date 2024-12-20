@@ -1,15 +1,37 @@
 @extends('layouts.app')
 @section('content')
-<div class="flex justify-center items-center mt-4 text-sky-950">
-    <div class="w-1/2 h-1/2 bg-slate-100 p-6 rounded-xl shadow-lg flex flex-col justify-center items-center">
-        <h1 class=" text-center text-xl font-semibold">
-            Hello, Agus Septian
-        </h1>
-        <img src="{{ asset('image/logo.png') }}" alt="" class="w-40 h-40 mt-7">
-        <h1 class="mt-4 font-bold text-xl mb-3"> Terima Kasih Sudah Berdonasi !</h1>
-        <h1 class="text-center"> Kebaikan hati Anda adalah cahaya harapan bagi <br> mereka yang membutuhkannya.</h1>
-        <a href="" class="btn bg-primaryy text-white mt-5 rounded-full px-7"> Donasiku</a>
-    </div>
-</div>
+    <div class="p-4">
+        {{-- <h1 class="mt-10 text-lg font-semibold"> Profile </h1> --}}
+        <div class="card bg-slate-100 shadow-lg lg:p-5 p-5 lg:w-7/12 w-full text-sky-950 font-semibold mt-4">
+            <h1 class="mb-3"> Profile Information </h1>
+            <div class="flex gap-4 mt-2">
+                <i class="fa-solid fa-user"></i>
+                <h1> Nadia Putri Rahmawati</h1>
+            </div>
+            <div class="flex gap-4 mt-2">
+                <i class="fa-solid fa-envelope"></i>
+                <h1> Nadiaputri@gmail.com</h1>
+            </div>
+            <div class="flex gap-4 mt-2">
+                <i class="fa-solid fa-phone"></i>
+                <h1> 0812811721565</h1>
+            </div>
+            <div class="flex gap-4">
+                <div class="card mt-3 bg-slate-50 p-3 rounded-2xl shadow-lg">
+                    <h1 class="font-semibold text-xs"> Dana Di Donasikan</h1>
+                    <h1 class="text-xs font-medium text-center"> Rp 100.000</h1>
+                </div>
+                <a href="/selengkapnya">
+                    <div class=" bg-primaryy mt-6 rounded-full p-2 text-white">
+                        <h1 class="lg:text-sm text-xs"> Donasikan Sekarang</h1>
+                    </div>
+                </a>
+            </div>
 
+            <div class="card bg-slate-50 p-3 rounded-2xl shadow-md lg:w-1/2 w-full mt-5">
+                <h1>  <i class="fa-solid fa-clock-rotate-left"></i>   History Donasi</h1>
+            </div>
+
+        </div>
+    </div>
 @endsection
