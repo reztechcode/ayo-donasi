@@ -28,11 +28,12 @@ Route::prefix('admin')->middleware(['admin'])->group(function () {
     // Proses Donasi
 Route::post('donasi/payment', [TransaksiController::class, 'berDonasi']);
 Route::post('/donasi/payment/callback', [TransaksiController::class, 'handleCallback']);
-
-// Route::get('donasi/payment/{id}', [TransaksiController::class, 'detailTransaksi']);
-
+    // Proses Donasi
 
 Route::middleware(['guest'])->group(function () {
     Route::get('auth/login', [AuthController::class, 'showLogin'])->name('login');
     Route::post('auth/login', [AuthController::class, 'authenticate']);
 });
+Route::get('logout', [AuthController::class, 'logout'])->middleware(['auth']);
+
+// Route::get('donasi/payment/{id}', [TransaksiController::class, 'detailTransaksi']);
