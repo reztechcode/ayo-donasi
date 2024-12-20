@@ -3,7 +3,8 @@
     <h1 class="font-bold text-xl mt-10 p-4 lg:flex hidden">Tak Miliki Lubang Anus, Bayi Ojol Menangis Kesakitan!</h1>
     <div class="flex gap-10 mt-5 ">
         <div class="w-full lg:w-8/12 px-4 lg:px-0">
-            <img src="{{ asset('image/4.png') }}" alt="" class="rounded-xl">
+            <img src="{{ asset('image/datadonasi1.jpg') }}" alt="" class="rounded-xl h-96 w-full">
+
             {{-- Mobile Rincian Dana --}}
             <div class="bg-slate-50 p-1 shadow mt-4 lg:hidden">
                 <h1 class="font-semibold text-md mt-3">Tak Miliki Lubang Anus, Bayi Ojol Menangis Kesakitan!</h1>
@@ -28,6 +29,32 @@
                     vitae nemo voluptas, fugiat amet officia obcaecati quasi modi molestiae magni doloribus nihil eos rem
                     voluptatum blanditiis officiis! At?</p>
             </div>
+            <div class="lg:hidden bg-slate-50 p-1 mt-4">
+                <h1 class=" font-semibold"> Para Donatur : </h1>
+                <div class="flex gap-5 mt-4">
+                    <h1><i class="fa-solid fa-user text-3xl"></i></h1>
+                    <div class="text-sm">
+                        <h1> Rp 50.000</h1>
+                        <h1 class="text-gray-500"> Oleh : Anonimus . 2 Hari Yang Lalu </h1>
+                    </div>
+                </div>
+                <hr>
+                <div class="flex gap-5 mt-2">
+                    <h1><i class="fa-solid fa-user text-3xl"></i></h1>
+                    <div class="text-sm">
+                        <h1> Rp 50.000</h1>
+                        <h1 class="text-gray-500"> Oleh : Anonimus . 2 Hari Yang Lalu </h1>
+                    </div>
+                </div>
+                <hr>
+                <div class="flex gap-5 mt-2">
+                    <h1><i class="fa-solid fa-user text-3xl"></i></h1>
+                    <div class="text-sm">
+                        <h1> Rp 50.000</h1>
+                        <h1 class="text-gray-500"> Oleh : Anonimus . 2 Hari Yang Lalu </h1>
+                    </div>
+                </div>
+            </div>
         </div>
 
 
@@ -42,7 +69,7 @@
             <a href="" class="btn rounded-full text-white bg-sky-900 mt-4 hover:bg-blue-950 "> Bagikan <i
                     class="fa-solid fa-share-nodes text-lg"></i></a>
             <h1 class="mt-6 font-semibold"> Donatur : </h1>
-            <div class="flex gap-5 mt-2">
+            <div class="flex gap-5 mt-4">
                 <h1><i class="fa-solid fa-user text-3xl"></i></h1>
                 <div class="text-sm">
                     <h1> Rp 50.000</h1>
@@ -58,6 +85,20 @@
                 </div>
             </div>
             <hr>
+            <div class="flex gap-5 mt-2">
+                <h1><i class="fa-solid fa-user text-3xl"></i></h1>
+                <div class="text-sm">
+                    <h1> Rp 50.000</h1>
+                    <h1 class="text-gray-500"> Oleh : Anonimus . 2 Hari Yang Lalu </h1>
+                </div>
+            </div>
+            <div class="flex gap-5 mt-2">
+                <h1><i class="fa-solid fa-user text-3xl"></i></h1>
+                <div class="text-sm">
+                    <h1> Rp 50.000</h1>
+                    <h1 class="text-gray-500"> Oleh : Anonimus . 2 Hari Yang Lalu </h1>
+                </div>
+            </div>
             <div class="flex gap-5 mt-2">
                 <h1><i class="fa-solid fa-user text-3xl"></i></h1>
                 <div class="text-sm">
@@ -72,7 +113,8 @@
             <h1 class="font-bold"> Kamu Juga Bisa Bantu :</h1>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mt-4 gap-7">
                 <div class="flex bg-slate-50 shadow-xl rounded-2xl gap-0">
-                    <img src="{{ asset('image/3.png') }}" alt="" class="rounded-3xl w-32 h-36 lg:w-36 lg:h-44 p-4">
+                    <img src="{{ asset('image/anak.png') }}" alt=""
+                        class="rounded-3xl w-32 h-36 lg:w-36 lg:h-44 p-4">
                     <div class="p-4">
                         <h1 class="font-semibold lg:text-sm text-xs">Tak Miliki Lubang Anus, Bayi Ojol Menangis Kesakitan!
                         </h1>
@@ -86,7 +128,8 @@
                     </div>
                 </div>
                 <div class="flex bg-slate-50 shadow-xl rounded-2xl gap-0">
-                    <img src="{{ asset('image/3.png') }}" alt="" class="rounded-3xl w-32 h-36 lg:w-36 lg:h-44 p-4">
+                    <img src="{{ asset('image/datadonasi1.jpg') }}" alt=""
+                        class="rounded-3xl w-32 h-36 lg:w-36 lg:h-44 p-4">
                     <div class="p-4">
                         <h1 class="font-semibold lg:text-sm text-xs">Tak Miliki Lubang Anus, Bayi Ojol Menangis Kesakitan!
                         </h1>
@@ -100,7 +143,8 @@
                     </div>
                 </div>
                 <div class="flex bg-slate-50 shadow-xl rounded-2xl gap-0">
-                    <img src="{{ asset('image/3.png') }}" alt="" class="rounded-3xl w-32 h-36 lg:w-36 lg:h-44 p-4">
+                    <img src="{{ asset('image/3.png') }}" alt=""
+                        class="rounded-3xl w-32 h-36 lg:w-36 lg:h-44 p-4">
                     <div class="p-4">
                         <h1 class="font-semibold lg:text-sm text-xs">Tak Miliki Lubang Anus, Bayi Ojol Menangis Kesakitan!
                         </h1>

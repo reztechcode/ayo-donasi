@@ -10,6 +10,11 @@ Route::get('/', function () {
     return view('index');
 });
 
+Route::get('/Selengkapnya', [DonasiController::class, 'index'] );
+Route::get('/Detail', [DonasiController::class, 'DetailDonasi'] );
+Route::get('/Tentangkami', [DonasiController::class, 'TentangKami'] );
+Route::get('/Category', [DonasiController::class, 'CategoryDonasi'] );
+
 Route::middleware(['guest'])->group(function () {
     Route::get('auth/login', [AuthController::class, 'showLogin'])->name('login');
     Route::post('auth/login', [AuthController::class, 'authenticate']);
@@ -20,8 +25,7 @@ Route::prefix('admin')->middleware(['admin'])->group(function () {
     Route::resource('userman', UsermanController::class);
 });
 
-Route::get('/Selengkapnya', [DonasiController::class, 'index'] );
-Route::get('/Detail', [DonasiController::class, 'DetailDonasi'] );
+
 Route::middleware(['guest'])->group(function () {
     Route::get('auth/login', [AuthController::class, 'showLogin'])->name('login');
     Route::post('auth/login', [AuthController::class, 'authenticate']);

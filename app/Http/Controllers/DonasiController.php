@@ -13,4 +13,12 @@ class DonasiController extends Controller
     public function DetailDonasi() {
         return view('Pages.DetailDonasi');
     }
+
+    public function TentangKami(){
+        return view('Pages.TentangKami');
+    }
+
+    public function CategoryDonasi() {
+        return view('Pages.CategoryDonasi');
+    }
 }
