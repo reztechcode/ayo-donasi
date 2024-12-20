@@ -27,6 +27,11 @@ class Campaign extends Model
         'status',
     ];
 
+    protected $casts = [
+        'start_date' => 'datetime',
+        'end_date' => 'datetime',
+    ];
+
     /**
      * Boot method untuk model.
      */
