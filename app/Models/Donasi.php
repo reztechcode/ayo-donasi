@@ -19,6 +19,7 @@ class Donasi extends Model
         'campaign_id',
         'amount',
         'status',
+        'show_name',
     ];
 
     protected static function boot()

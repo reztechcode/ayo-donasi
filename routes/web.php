@@ -15,7 +15,7 @@ Route::get('/detail/{slug}', [DonasiController::class, 'DetailDonasi'] );
 Route::get('/tentang-kami', [DonasiController::class, 'TentangKami'] );
 Route::get('/category/{id}', [DonasiController::class, 'CategoryDonasi'] );
 Route::get('/profile', [DonasiController::class, 'ProfileDonasi'] );
-Route::get('/detailpayment', [DonasiController::class, 'DetailPayment'] );
+Route::get('donasi/payment/{id}', [DonasiController::class, 'DetailPayment']);
 
 Route::prefix('admin')->middleware(['admin'])->group(function () {
     Route::resource('userman', UsermanController::class);
@@ -24,7 +24,7 @@ Route::prefix('admin')->middleware(['admin'])->group(function () {
 });
 
 Route::post('donasi/payment', [TransaksiController::class, 'berDonasi']);
-Route::get('donasi/{id}', [TransaksiController::class, 'detailTransaksi']);
+// Route::get('donasi/payment/{id}', [TransaksiController::class, 'detailTransaksi']);
 Route::post('/donasi/payment/callback', [TransaksiController::class, 'handleCallback']);
 
 

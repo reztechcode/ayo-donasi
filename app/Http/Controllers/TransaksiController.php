@@ -29,7 +29,10 @@ class TransaksiController extends Controller
             'campaign_id' => 'required|exists:campaigns,campaign_id',
             'message' => 'nullable|string|max:200',
             'amount' => 'required|numeric',
+            'show_name' => 'nullable|string|in:on,off',
         ]);
+       
+        $validatedData['show_name'] = $request->input('show_name') === 'on' ? 1 : 0;
         $donation = Donasi::create($validatedData);
         $transaksi = Transaksi::create([
             'donation_id' => $donation->donation_id,
@@ -67,7 +70,7 @@ class TransaksiController extends Controller
         $transaksi = Transaksi::find($transaksi->transaction_id);
         $transaksi->snap_token = $snapToken['snap_token'];
         $transaksi->save();
-        return response()->json($snapToken);
+        return redirect()->to('donasi/payment/'. $transaksi->transaction_id);
     }
 
     public function detailTransaksi($id){

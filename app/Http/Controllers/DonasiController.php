@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\Campaign;
 use App\Models\Category;
-use Carbon\Carbon;
+use App\Models\Transaksi;
 use Illuminate\Http\Request;
 
 class DonasiController extends Controller
@@ -95,8 +96,13 @@ class DonasiController extends Controller
     {
         return view('Pages.Profile');
     }
-    public function DetailPayment()
+    public function DetailPayment($id)
     {
-        return view('Pages.DetailPayment');
+        $transaction = Transaksi::with('donation')->with('user')->find($id);
+        // return response()->json($transaction);
+        if ($transaction->status == 'completed') {
+            return view ('Pages.Profile', compact('transaction'));
+        }
+        return view('Pages.DetailPayment', compact('transaction'));
     }
 }

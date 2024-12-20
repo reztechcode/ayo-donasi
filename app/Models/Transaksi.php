@@ -15,9 +15,14 @@ class Transaksi extends Model
     protected $keyType = 'string';
     protected $table = 'transactions';
 
-    protected $fillable = [ 'transaction_id', 'donation_id', 'midtrans_order_id',
-                            'gross_amount', 'status', 'snap_token'
-                        ];
+    protected $fillable = [
+        'transaction_id',
+        'donation_id',
+        'midtrans_order_id',
+        'gross_amount',
+        'status',
+        'snap_token'
+    ];
 
     protected static function boot()
     {
@@ -35,5 +40,17 @@ class Transaksi extends Model
     public function donation()
     {
         return $this->belongsTo(Donasi::class, 'donation_id', 'donation_id');
+    }
+    // Relasi Berjenjang Ke Tabel User
+    public function user()
+    {
+        return $this->hasOneThrough(
+            User::class,
+            Donasi::class,
+            'donation_id',  // Foreign key di tabel donasi
+            'user_id',         // Foreign key di tabel user
+            'donation_id',  // Local key di tabel transaksi
+            'user_id'     // Local key di tabel donasi
+        );
     }
 }
