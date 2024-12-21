@@ -28,9 +28,12 @@
                 </a>
             </div>
 
-            <div class="card bg-slate-50 p-3 rounded-2xl shadow-md lg:w-1/2 w-full mt-5">
-                <h1>  <i class="fa-solid fa-clock-rotate-left"></i>   History Donasi</h1>
-            </div>
+            <a href="donasi/history">
+                <div class="card bg-slate-50 p-3 rounded-2xl shadow-md lg:w-1/2 w-full mt-5">
+                    <h1> <i class="fa-solid fa-clock-rotate-left"></i> History Donasi</h1>
+                </div>
+            </a>
+
 
         </div>
     </div>

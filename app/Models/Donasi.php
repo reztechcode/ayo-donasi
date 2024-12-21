@@ -18,6 +18,7 @@ class Donasi extends Model
         'user_id',
         'campaign_id',
         'amount',
+        'message',
         'status',
         'show_name',
     ];

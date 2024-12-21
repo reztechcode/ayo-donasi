@@ -22,7 +22,7 @@
         <div class="grid lg:grid-cols-4 grid-cols-2 gap-5 justify-center lg:w-2/3 w-4/5">
             @foreach ($category as $data)
                 <a href="{{ url('category/' . $data->category_id) }}">
-                    <div class="card bg-slate-100 p-4 text-center items-center rounded-3xl shadow-xl">
+                    <div class="card bg-slate-100 p-4 text-center items-center rounded-3xl shadow-xl lg:h-56 h-40">
                         <img src="{{ asset('storage/' . $data->icon) }}" alt="" class="mt-2 lg:w-4/5 w-20">
                         <h1 class="font-semibold text-lg"> {{ $data->name }} </h1>
                     </div>
@@ -42,7 +42,7 @@
                 <ul class="splide__list">
                     @foreach ($campaign as $item)
                         <li class="splide__slide shadow-none">
-                            <a href="{{ url('donasi/' . $item->slug. '/detail' )  }}">
+                            <a href="{{ url('donasi/detail/' . $item->slug )  }}">
                                 <div class="card bg-slate-100 shadow-xl mb-6  lg:h-auto h-auto">
                                     <img src="{{ asset('storage/' . $item->image_path) }}" alt="Tidak Ada Image"
                                         class="rounded-t-3xl lg:h-60 h-40">
@@ -65,7 +65,7 @@
                                             <h1>Rp {{ number_format($item->target_amount, 0, ',', '.') }}</h1>
                                         </div>
                                         <div class="flex justify-between lg:mt-8 mt-4 ">
-                                            <h1 class="font-bold text-sm">30 Donatur</h1>
+                                            <h1 class="font-bold text-sm">{{ $item->total_donations }} Donatur</h1>
                                             <h1 class="font-bold text-sm">{{ $item->days_remaining }} Hari Lagi</h1>
                                         </div>
                                     </div>

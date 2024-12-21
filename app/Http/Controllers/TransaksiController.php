@@ -31,7 +31,7 @@ class TransaksiController extends Controller
             'amount' => 'required|numeric',
             'show_name' => 'nullable|string|in:on,off',
         ]);
-       
+
         $validatedData['show_name'] = $request->input('show_name') === 'on' ? 1 : 0;
         $donation = Donasi::create($validatedData);
         $transaksi = Transaksi::create([
@@ -70,13 +70,48 @@ class TransaksiController extends Controller
         $transaksi = Transaksi::find($transaksi->transaction_id);
         $transaksi->snap_token = $snapToken['snap_token'];
         $transaksi->save();
-        return redirect()->to('donasi/payment/'. $transaksi->transaction_id);
+        return redirect()->to('donasi/payment/' . $transaksi->transaction_id);
     }
 
-    public function detailTransaksi($id){
+    public function detailTransaksi($id)
+    {
         $trasaction = Transaksi::with('donation')->find($id);
         return response()->json($trasaction);
     }
+
+    // public function handleCallback(Request $request)
+    // {
+    //     $serverKey = config('midtrans.server_key');
+    //     $hashedKey = hash('sha512', $request->order_id . $request->status_code . $request->gross_amount . $serverKey);
+
+    //     if ($hashedKey !== $request->signature_key) {
+    //         return response()->json(['message' => 'Invalid signature key'], 403);
+    //     }
+
+    //     $transactionStatus = $request->transaction_status;
+    //     $orderId = $request->order_id;
+    //     $transaction = Transaksi::where('midtrans_order_id', $orderId)->first();
+    //     $donation = Donasi::find($transaction->donation_id);
+    //     if (!$transaction) {
+    //         return response()->json(['message' => 'Order not found'], 404);
+    //     }
+
+    //     // Perbarui status transaksi berdasarkan notifikasi
+    //     if ($transactionStatus === 'capture' || $transactionStatus === 'settlement') {
+    //         $transaction->status = 'completed';
+    //         $donation->status = 'completed';
+    //     } elseif ($transactionStatus === 'pending') {
+    //         $transaction->status = 'pending';
+    //         $donation->status = 'pending';
+    //     } elseif ($transactionStatus === 'deny' || $transactionStatus === 'cancel' || $transactionStatus === 'expire') {
+    //         $transaction->status = 'failed';
+    //         $donation->status = 'failed';
+    //     }
+    //     $transaction->save();
+    //     $donation->save();
+
+    //     return response()->json(['message' => 'Callback received successfully']);
+    // }
 
     public function handleCallback(Request $request)
     {
@@ -89,26 +124,48 @@ class TransaksiController extends Controller
 
         $transactionStatus = $request->transaction_status;
         $orderId = $request->order_id;
+
+        // Temukan transaksi berdasarkan `order_id`
         $transaction = Transaksi::where('midtrans_order_id', $orderId)->first();
-        $donation = Donasi::find($transaction->donation_id);
+
         if (!$transaction) {
             return response()->json(['message' => 'Order not found'], 404);
         }
 
-        // Perbarui status transaksi berdasarkan notifikasi
+        // Temukan donasi yang terkait dengan transaksi
+        $donation = Donasi::find($transaction->donation_id);
+
+        if (!$donation) {
+            return response()->json(['message' => 'Donation not found'], 404);
+        }
+
+        // Perbarui status transaksi dan donasi berdasarkan notifikasi
         if ($transactionStatus === 'capture' || $transactionStatus === 'settlement') {
             $transaction->status = 'completed';
             $donation->status = 'completed';
         } elseif ($transactionStatus === 'pending') {
             $transaction->status = 'pending';
             $donation->status = 'pending';
-        } elseif ($transactionStatus === 'deny' || $transactionStatus === 'cancel' || $transactionStatus === 'expire') {
+        } elseif (in_array($transactionStatus, ['deny', 'cancel', 'expire'])) {
             $transaction->status = 'failed';
             $donation->status = 'failed';
         }
+
         $transaction->save();
         $donation->save();
+        $campaign = Campaign::find($donation->campaign_id);
+
+        if ($campaign) {
+            $collectedAmount = Donasi::where('campaign_id', $campaign->campaign_id)
+                ->where('status', 'completed')
+                ->sum('amount');
+
+            $campaign->collected_amount = $collectedAmount;
+            $campaign->save();
+        }
 
         return response()->json(['message' => 'Callback received successfully']);
     }
 }
+
+

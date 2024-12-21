@@ -22,7 +22,7 @@
     </div>
     <div class="grid lg:grid-cols-3 grid-cols-2 lg:gap-6 gap-2 lg:px-0 px-3">
         @foreach ($campaign as $item)
-            <a href="{{ url('donasi/' . $item->slug. '/detail') }}">
+            <a href="{{ url('donasi/detail/' . $item->slug) }}">
                 <div class="card bg-slate-50 shadow-xl mb-6">
                     <img src="{{ asset('storage/' . $item->image_path) }}" alt=""
                         class="lg:rounded-t-3xl rounded-t-xl lg:h-60 h-36">
@@ -40,7 +40,7 @@
                         </div>
                         <div class="flex gap-4 mt-3 flex-wrap lg:flex-nowrap flex-col lg:flex-row lg:text-md text-sm">
                             <h1 class="flex items-center gap-2">
-                                <i class="fa-solid fa-user"></i> 37 Donatur
+                                <i class="fa-solid fa-user"></i> {{ $item->total_donations}} Donatur
                             </h1>
                             <h1 class="flex items-center gap-2">
                                 <i class="fa-solid fa-clock"></i> {{ $item->days_remaining }} Hari Lagi

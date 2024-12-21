@@ -11,9 +11,9 @@
     <meta name="robots" content="noindex, nofollow">
 </head>
 
-<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+<body class="bg-slate-50 min-h-screen flex items-center justify-center">
     <!-- Body Wrapper -->
-    <div class="w-full max-w-md bg-white shadow-md rounded-3xl p-6">
+    <div class="w-full max-w-md bg-white shadow-lg rounded-3xl p-6">
         <div class="text-center mb-6">
             <a href="{{ url('/') }}" class="flex justify-center items-center">
                 <img src="{{ asset('image/logo.png') }}" alt="" class="w-32 h-32">
@@ -31,7 +31,7 @@
             </div>
         @endif
 
-        <form action="{{ route('login') }}" method="POST">
+        <form action="{{ route('register') }}" method="POST">
             @csrf
             @method('POST')
 
@@ -41,13 +41,20 @@
                     class="w-full border-2 border-gray-300 rounded-3xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primaryy bg-white"
                     required>
             </div>
+            <div class="mb-4">
+                <label for="email" class="block text-gray-700 font-medium mb-2">Username</label>
+                <input type="text" id="name" name="name"
+                    class="w-full border-2 border-gray-300 rounded-3xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primaryy bg-white"
+                    required>
+            </div>
 
             <div class="mb-6 relative">
                 <label for="password" class="block text-gray-700 font-medium mb-2">Password</label>
                 <input type="password" id="password" name="password"
                     class="w-full border-2 border-gray-300 rounded-3xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primaryy bg-white"
                     required>
-                <button type="button" onclick="togglePassword()" class="absolute inset-y-0 right-4 flex items-center top-8">
+                <button type="button" onclick="togglePassword()"
+                    class="absolute inset-y-0 right-4 flex items-center top-8">
                     <i class="fa-solid fa-eye text-xl" id="eye-icon"></i>
                 </button>
             </div>
@@ -57,9 +64,8 @@
         </form>
 
         <div class="text-center mt-6">
-            <p class="text-sm text-gray-600">Belum Daftar ? 
-                <a href="/auth/register" class="text-primaryy hover:underline"
-                    target="_blank"> Daftar Sekarang</a>
+            <p class="text-sm text-gray-600">Belum Daftar ?
+                <a href="/auth/registrasi" class="text-primaryy hover:underline" target="_blank"> Daftar Sekarang</a>
             </p>
         </div>
     </div>
