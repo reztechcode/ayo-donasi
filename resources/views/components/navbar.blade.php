@@ -12,18 +12,19 @@
                 class="py-2 px-4 hover:border-b-2 hover:border-sky-500 hover:rounded-full {{ Request::is('/') ? 'bg-slate-200 text-sky-950 rounded-full' : '' }}">
                 Beranda
             </a>
-
-
             <a href="{{ url('tentang-kami') }}"
                 class=" hover:border-b-2 hover:border-sky-500 hover:rounded-full py-2 px-4 {{ Request::is('tentang-kami') ? 'bg-slate-200 text-sky-950 rounded-full' : '' }}">
                 Tentang Kami
             </a>
+            @auth
             <a href="{{ url('donasi/history') }}"
                 class=" hover:border-b-2 hover:border-sky-500 hover:rounded-full py-2 px-4 {{ Request::is('donasi/history') ? 'bg-slate-200 text-sky-950 rounded-full' : '' }}">
                 Donasiku
             </a>
+            @endauth
         </div>
 
+        @if (!Auth::check())
         <!-- Tombol Login dan Daftar -->
         <div class="space-x-3 hidden md:flex">
             <a href="{{ url('/auth/login') }}"
@@ -35,6 +36,15 @@
                 Daftar <i class="fa-solid fa-user"></i>
             </a>
         </div>
+        @else
+        <div class="space-x-3 hidden md:flex">
+            <a href="/profile"
+                class="flex flex-col items-center hover:text-gray-200 {{ Request::is('profile') ? 'bg-slate-200 px-3 py-2 rounded-full text-sky-950' : '' }}">
+                <i class="fa-solid fa-users-gear text-xl"></i>
+                <span class="text-sm">Profile</span>
+            </a>
+        </div>
+        @endif
     </div>
 
     <!-- Navigasi Mobile -->
