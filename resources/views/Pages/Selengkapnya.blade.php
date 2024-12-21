@@ -31,7 +31,7 @@
                             {{ $item->title }}
                         </h1>
 
-                        <h1 class="text-sm mt-3">Data Terkumpul</h1>
+                        <h1 class="text-sm mt-3">Dana Terkumpul</h1>
                         <progress class="progress progress-info w-full" value="{{ $item->progress }}"
                             max="100"></progress>
                         <div class="flex justify-between lg:text-lg font-semibold text-xs">

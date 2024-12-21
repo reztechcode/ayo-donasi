@@ -50,7 +50,7 @@
                                         <h1
                                             class="font-semibold lg:text-lg  text-sm  overflow-hidden text-ellipsis whitespace-nowrap">
                                             {{ $item->title }} </h1>
-                                        <h1 class="text-sm mt-4">Data Terkumpul</h1>
+                                        <h1 class="text-sm mt-4">Dana Terkumpul</h1>
                                         @php
                                             $progress =
                                                 $item->target_amount > 0
