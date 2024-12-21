@@ -3,7 +3,7 @@
     <h1 class="font-bold text-xl mt-10 p-4 lg:flex hidden">{{ $campaign->title }}</h1>
     <div class="flex gap-10 mt-5 ">
         <div class="w-full lg:w-8/12 px-4 lg:px-0">
-            <img src="{{ asset('storage/' . $campaign->image_path) }}" alt="" class="rounded-xl h-96 w-full">
+            <img src="{{ asset('storage/' . $campaign->image_path) }}" alt="" class="rounded-xl lg:h-96 w-full">
 
             {{-- Mobile Rincian Dana --}}
             <div class="bg-slate-50 p-1 shadow mt-4 lg:hidden">
