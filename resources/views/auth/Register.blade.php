@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>-</title>
+    <title>Daftar Akun - Ayo Donasi</title>
     <link rel="icon" href="{{ asset('assets/images/logos/favicon.png') }}" type="image/png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     @vite('resources/css/app.css')
@@ -64,8 +64,8 @@
         </form>
 
         <div class="text-center mt-6">
-            <p class="text-sm text-gray-600">Belum Daftar ?
-                <a href="/auth/registrasi" class="text-primaryy hover:underline" target="_blank"> Daftar Sekarang</a>
+            <p class="text-sm text-gray-600">Sudah Punya Akun ?
+                <a href="/auth/login" class="text-primaryy hover:underline"> Masuk Sekarang</a>
             </p>
         </div>
     </div>

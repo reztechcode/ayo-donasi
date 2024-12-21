@@ -50,9 +50,9 @@ class AuthController extends Controller
 
         // Alihkan ke halaman sesuai peran pengguna
         if ($user->role == 'admin') {
-            return redirect()->to('/admin/category');
+            return redirect()->to('/admin/dashboard');
         } elseif ($user->role == 'user') {
-            return redirect()->to('/');
+            return redirect()->to('/auth/login');
         }
 
         return redirect()->to('/'); // Default redirect jika peran tidak dikenali
