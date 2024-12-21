@@ -1,40 +1,41 @@
 @extends('layouts.app')
 @section('content')
-    <div class="p-4">
-        {{-- <h1 class="mt-10 text-lg font-semibold"> Profile </h1> --}}
-        <div class="card bg-slate-100 shadow-lg lg:p-5 p-5 lg:w-7/12 w-full text-sky-950 font-semibold mt-4">
-            <h1 class="mb-3"> Profile Information </h1>
-            <div class="flex gap-4 mt-2">
-                <i class="fa-solid fa-user"></i>
-                <h1> Nadia Putri Rahmawati</h1>
+    <div class="flex justify-center items-center min-h-screen bg-gray-200 rounded-2xl">
+        <div class="card bg-slate-100 shadow-lg p-6 w-full lg:w-8/12 xl:w-6/12 rounded-lg">
+            <h1 class="text-2xl font-semibold text-center text-sky-950 mb-6">Profile Information</h1>
+
+            <div class="flex gap-4 items-center mb-4">
+                <i class="fa-solid fa-user text-sky-950"></i>
+                <h2 class="text-lg font-medium">Nadia Putri Rahmawati</h2>
             </div>
-            <div class="flex gap-4 mt-2">
-                <i class="fa-solid fa-envelope"></i>
-                <h1> Nadiaputri@gmail.com</h1>
+
+            <div class="flex gap-4 items-center mb-4">
+                <i class="fa-solid fa-envelope text-sky-950"></i>
+                <h2 class="text-lg font-medium">Nadiaputri@gmail.com</h2>
             </div>
-            <div class="flex gap-4 mt-2">
-                <i class="fa-solid fa-phone"></i>
-                <h1> 0812811721565</h1>
+
+            <div class="flex gap-4 items-center mb-4">
+                <i class="fa-solid fa-phone text-sky-950"></i>
+                <h2 class="text-lg font-medium">0812811721565</h2>
             </div>
-            <div class="flex gap-4">
-                <div class="card mt-3 bg-slate-50 p-3 rounded-2xl shadow-lg">
-                    <h1 class="font-semibold text-xs"> Dana Di Donasikan</h1>
-                    <h1 class="text-xs font-medium text-center"> Rp 100.000</h1>
+
+            <div class="flex gap-4 justify-between mb-6">
+                <div class="card bg-slate-50 p-4 rounded-xl shadow-md w-1/2">
+                    <h2 class="font-semibold text-xs">Dana Di Donasikan</h2>
+                    <h3 class="text-xs font-medium text-center text-sky-950">Rp 100.000</h3>
                 </div>
                 <a href="/selengkapnya">
-                    <div class=" bg-primaryy mt-6 rounded-full p-2 text-white">
-                        <h1 class="lg:text-sm text-xs"> Donasikan Sekarang</h1>
+                    <div class="bg-primaryy mt-2 rounded-full p-3 text-white text-center w-32">
+                        <h1 class="text-sm">Donasikan Sekarang</h1>
                     </div>
                 </a>
             </div>
 
             <a href="donasi/history">
-                <div class="card bg-slate-50 p-3 rounded-2xl shadow-md lg:w-1/2 w-full mt-5">
-                    <h1> <i class="fa-solid fa-clock-rotate-left"></i> History Donasi</h1>
+                <div class="card bg-slate-50 p-4 rounded-xl shadow-md w-full mt-5 text-center">
+                    <h2><i class="fa-solid fa-clock-rotate-left text-sky-950 mr-2"></i> History Donasi</h2>
                 </div>
             </a>
-
-
         </div>
     </div>
 @endsection

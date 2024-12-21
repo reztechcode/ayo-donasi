@@ -3,7 +3,7 @@
     <form>
         <div class="mb-11 flex justify-center mt-7">
             <div class="relative lg:w-5/12 w-full px-3" id="input">
-                <input value="" placeholder="Search..." name="q"
+                <input placeholder="Search..." name="q"
                     class="block w-full text-sm h-[50px] px-4 text-slate-900 bg-white rounded-full border-2 border-slate-400 appearance-none focus:border-transparent focus:outline focus:outline-2 focus:outline-primary focus:ring-0 hover:border-brand-500-secondary- peer invalid:border-error-500 invalid:focus:border-error-500 overflow-ellipsis overflow-hidden text-nowrap pr-[48px]"
                     id="floating_outlined" type="text" value="{{ $search ?? '' }}" />
                 <div class="absolute top-3 right-8">

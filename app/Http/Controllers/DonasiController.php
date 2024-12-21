@@ -31,29 +31,51 @@ class DonasiController extends Controller
 
     public function Selengkapnya()
     {
+        // Ambil semua campaign dan lakukan pemetaan untuk memodifikasi data
         $campaign = Campaign::all()->map(function ($item) {
             $item->start_date = Carbon::parse($item->start_date);
             $item->end_date = Carbon::parse($item->end_date);
 
-            // diffInDays menghitung selisih dalam hari antara dua tanggal.
+            // Menghitung selisih hari
             $item->days_remaining = $item->start_date->diffInDays($item->end_date);
+
+            // Menghitung progress donasi
             $item->progress = $item->target_amount > 0 ? ($item->collected_amount / $item->target_amount) * 100 : 0;
+
+            // Menghitung jumlah donasi yang telah selesai
             $item->total_donations = Donasi::where('campaign_id', $item->campaign_id)
-                ->where('status', 'completed')->count();
-            $item->total_donations = Donasi::where('campaign_id', $item->campaign_id)
-                ->where('status', 'completed')->count();
+                ->where('status', 'completed')
+                ->count();
+
             return $item;
         });
 
+        // Ambil input pencarian
         $search = request()->input('q');
+
+        // Jika ada pencarian, filter campaign berdasarkan title atau campaign_id
         if ($search) {
-            $users = Campaign::where('title', 'like', '%' . $search . '%')
+            $campaign = Campaign::where('title', 'like', '%' . $search . '%')
                 ->orWhere('campaign_id', 'like', '%' . $search . '%')
                 ->paginate(20);
+
+            // Mapping data tambahan untuk pencarian
+            $campaign->map(function ($item) {
+                $item->start_date = Carbon::parse($item->start_date);
+                $item->end_date = Carbon::parse($item->end_date);
+                $item->days_remaining = $item->start_date->diffInDays($item->end_date);
+                $item->progress = $item->target_amount > 0 ? ($item->collected_amount / $item->target_amount) * 100 : 0;
+                $item->total_donations = Donasi::where('campaign_id', $item->campaign_id)
+                    ->where('status', 'completed')->count();
+                return $item;
+            });
         } else {
-            $users = Campaign::paginate(20);
+            // Jika tidak ada pencarian, tampilkan semua campaign
+            $campaign = Campaign::paginate(20);
         }
-        return view('Pages.Selengkapnya',  compact('campaign', 'search'));
+
+        // Kembalikan data ke view
+        return view('Pages.Selengkapnya', compact('campaign', 'search'));
     }
 
     public function DetailDonasi($slug)
