@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Models\Donasi;
 use App\Models\Transaksi;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class DonasiController extends Controller
 {
@@ -31,24 +32,37 @@ class DonasiController extends Controller
 
     public function Selengkapnya()
     {
-        // Ambil semua campaign dan lakukan pemetaan untuk memodifikasi data
-        $campaign = Campaign::all()->map(function ($item) {
+        $campaigns = Campaign::all()->map(function ($item) {
             $item->start_date = Carbon::parse($item->start_date);
             $item->end_date = Carbon::parse($item->end_date);
 
-            // Menghitung selisih hari
+            // diffInDays menghitung selisih dalam hari antara dua tanggal.
             $item->days_remaining = $item->start_date->diffInDays($item->end_date);
-
-            // Menghitung progress donasi
             $item->progress = $item->target_amount > 0 ? ($item->collected_amount / $item->target_amount) * 100 : 0;
-
-            // Menghitung jumlah donasi yang telah selesai
             $item->total_donations = Donasi::where('campaign_id', $item->campaign_id)
-                ->where('status', 'completed')
-                ->count();
+                ->where('status', 'completed')->count();
 
             return $item;
         });
+        // $campaign = Campaign::all()->map(function ($item) {
+        //     $item->start_date = Carbon::parse($item->start_date);
+        //     $item->end_date = Carbon::parse($item->end_date);
+
+        //     // Menghitung selisih hari
+        //     $item->days_remaining = $item->start_date->diffInDays($item->end_date);
+
+        //     // Menghitung progress donasi
+        //     $item->progress = $item->target_amount > 0 ? ($item->collected_amount / $item->target_amount) * 100 : 0;
+
+        //     // Menghitung jumlah donasi yang telah selesai
+        //     $item->total_donations = Donasi::where('campaign_id', $item->campaign_id)
+        //         ->where('status', 'completed')
+        //         ->count();
+
+        //     return $item;
+        // });
+
+        // dd($campaign);
 
         // Ambil input pencarian
         $search = request()->input('q');
@@ -75,7 +89,7 @@ class DonasiController extends Controller
         }
 
         // Kembalikan data ke view
-        return view('Pages.Selengkapnya', compact('campaign', 'search'));
+        return view('Pages.Selengkapnya', compact('campaigns', 'search'));
     }
 
     public function DetailDonasi($slug)
@@ -157,8 +171,12 @@ class DonasiController extends Controller
 
     public function ProfileDonasi()
     {
-        return view('Pages.Profile');
+        $donasi = Donasi::where('user_id', Auth::user()->user_id)->sum('amount');
+        return view('Pages.Profile', compact('donasi'));
     }
+
+
+
     public function DetailPayment($id)
     {
         $transaction = Transaksi::with('donation')->with('user')->find($id);
@@ -171,7 +189,8 @@ class DonasiController extends Controller
 
     public function HistoryDonasi()
     {
-        return view('Pages.HistoryProfile');
+        $donasi = Donasi::where('user_id', Auth::user()->user_id)->with('campaign')->get();
+        return view('Pages.HistoryProfile', compact('donasi'));
     }
 
     // public function showShare()

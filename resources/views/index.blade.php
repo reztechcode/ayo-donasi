@@ -3,6 +3,9 @@
     <div class="p-4">
         <div class="carousel  lg:rounded-3xl rounded-lg lg:h-f" id="carousel">
             <div class="carousel-item w-full  transition-opacity duration-500">
+                <img src="{{ asset('image/1.png') }}" alt="Burger" class="lg:h-full h-32" />
+            </div>
+            <div class="carousel-item w-full  transition-opacity duration-500">
                 <img src="{{ asset('image/2.png') }}" alt="Burger" class="lg:h-full h-32" />
             </div>
             <div class="carousel-item w-full  transition-opacity duration-500">
@@ -10,9 +13,6 @@
             </div>
             <div class="carousel-item w-full  transition-opacity duration-500">
                 <img src="{{ asset('image/4.png') }}" alt="Burger" class="lg:h-full h-32" />
-            </div>
-            <div class="carousel-item w-full  transition-opacity duration-500">
-                <img src="{{ asset('image/7.png') }}" alt="Burger" class="lg:h-full h-32" />
             </div>
         </div>
     </div>

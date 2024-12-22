@@ -105,7 +105,8 @@
                     <div class="text-sm">
                         <h1>Rp {{ number_format($datadonatur->amount, 0, ',', '.') }}</h1>
                         <h1 class="text-gray-500">
-                            Oleh : {{ $datadonatur->user->name ?? 'Anonimus' }} .
+                            Oleh {{ $datadonatur->show_name == 0 ? 'Anonim' : $datadonatur->user->name ?? 'Anonim' }}
+                            {{-- Oleh : {{ $datadonatur->user->name ?? 'Anonimus' }} . --}}
                             {{ number_format($datadonatur->days_ago, 0, ',', '.') == 0 ? 'Hari ini' : number_format($datadonatur->days_ago, 0, ',', '.') . ' Hari Yang Lalu' }}
                         </h1>
                         <h1>{{ $datadonatur->message ?? '-' }} .</h1>

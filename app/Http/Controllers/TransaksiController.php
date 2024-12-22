@@ -7,6 +7,7 @@ use App\Models\Donasi;
 use App\Models\Campaign;
 use App\Models\Transaksi;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Midtrans\Config as MidtransConf;
 
@@ -32,6 +33,10 @@ class TransaksiController extends Controller
             'show_name' => 'nullable|string|in:on,off',
         ]);
 
+        if(Auth::check()){
+            $user = Auth::user();
+            $validatedData['user_id'] = $user->user_id;
+        }
         $validatedData['show_name'] = $request->input('show_name') === 'on' ? 1 : 0;
         $donation = Donasi::create($validatedData);
         $transaksi = Transaksi::create([
@@ -54,12 +59,12 @@ class TransaksiController extends Controller
                 ]
             ),
             'customer_details' => [
-                'first_name' => 'Guest',
-                'email' => null,
-                'phone' => null,
-                // 'first_name' => Auth::user()->name,
-                // 'email' => Auth::user()->email,
-                // 'phone' => Auth::user()->phone ?? null,
+                // 'first_name' => 'Guest',
+                // 'email' => null,
+                // 'phone' => null,
+                'first_name' => Auth::user()->name ?? 'Guest',
+                'email' => Auth::user()->email ?? null,
+                'phone' => Auth::user()->phone ?? null,
             ],
             // 'finish_redirect_url' => 'http://localhost:8000/finish'
         ];

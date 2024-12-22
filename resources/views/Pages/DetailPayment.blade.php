@@ -35,8 +35,8 @@
     </script>
 @endpush
 @section('content')
-    <div class="flex justify-center items-center mt-10 text-sky-950 p-4">
-        <div class="w-1/2 mx-10 h-1/2 bg-slate-100 p-6 rounded-xl shadow-lg flex flex-col">
+    <div class="flex justify-center items-center mt-10 text-sky-950 p-2">
+        <div class="lg:w-1/2 mx-10 h-1/2 bg-slate-100 lg:p-6 p-2 rounded-xl shadow-lg flex flex-col">
             <h1 class="text-center text-xl font-semibold mb-4">
                 Detail Donasi
             </h1>
@@ -46,7 +46,7 @@
                     <tr>
                         <th class="pr-4">Nama Donatur</th>
                         <td class="pr-4">:</td>
-                        <td>{{ $transaction->user?->name ?? 'Anonim' }}</td>
+                        <td>{{ $transaction->donation->show_name == 0 ? 'Anonim' : $transaction->user->name  }}</td>
                     </tr>
                     <tr>
                         <th class="pr-4">Nominal</th>

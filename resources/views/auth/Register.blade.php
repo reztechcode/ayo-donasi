@@ -11,7 +11,7 @@
     <meta name="robots" content="noindex, nofollow">
 </head>
 
-<body class="bg-slate-50 min-h-screen flex items-center justify-center">
+<body class="bg-slate-50 min-h-screen flex items-center justify-center p-4">
     <!-- Body Wrapper -->
     <div class="w-full max-w-md bg-white shadow-lg rounded-3xl p-6">
         <div class="text-center mb-6">
