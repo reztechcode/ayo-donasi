@@ -7,14 +7,14 @@
 
             {{-- Mobile Rincian Dana --}}
             <div class="bg-slate-50 p-1 shadow mt-4 lg:hidden">
-                <h1 class="font-semibold text-md mt-3">Tak Miliki Lubang Anus, Bayi Ojol Menangis Kesakitan!</h1>
+                <h1 class="font-semibold text-md mt-3">{{ $campaign->title }}</h1>
                 <h1 class="mt-3"> {{ $campaign->created_at }}</h1>
                 <div class="flex gap-4 mt-3">
                     <h1> <i class="fa-solid fa-user"></i> {{ $campaign->total_donations }} Donatur</h1>
                     <h1> <i class="fa-solid fa-clock"></i> {{ $campaign->days_remaining }} Hari Lagi</h1>
                 </div>
                 <progress class="progress progress-info w-56" value="{{ $campaign->progress }}" max="100"></progress>
-                <h1 class="mt-2 text-2xl font-bold">Rp {{ number_format($campaign->target_amount, 0, ',', '.') }} <span
+                <h1 class="mt-2 text-2xl font-bold">Rp {{ number_format($campaign->collected_amount, 0, ',', '.') }} <span
                         class="text-sm font-medium"> Terkumpul</span></h1>
                 <a href="#" class="btn rounded-full text-white bg-primaryy mt-4 w-52 hover:bg-sky-500"
                     onclick="my_modal_3.showModal()"> Donasikan</a>

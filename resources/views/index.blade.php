@@ -14,6 +14,9 @@
             <div class="carousel-item w-full  transition-opacity duration-500">
                 <img src="{{ asset('image/4.png') }}" alt="Burger" class="lg:h-full h-32" />
             </div>
+            <div class="carousel-item w-full  transition-opacity duration-500">
+                <img src="{{ asset('image/6.png') }}" alt="Burger" class="lg:h-full h-32" />
+            </div>
         </div>
     </div>
 
