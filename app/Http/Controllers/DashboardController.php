@@ -16,7 +16,7 @@ class DashboardController extends Controller
         $donasi = Campaign::all();
         $penggalangan = Transaksi::where('status', 'completed')->get();
         $category = Category::all();
-        $campaign = Campaign::with('category')->orderBy('created_at', 'desc')->get()->map(function ($item) {
+        $campaign = Campaign::with('category')->orderBy('created_at', 'desc')->limit(4)->get()->map(function ($item) {
             $item->start_date = Carbon::parse($item->start_date);
             $item->end_date = Carbon::parse($item->end_date);
             $item->days_remaining = $item->start_date->diffInDays($item->end_date);
