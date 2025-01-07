@@ -48,37 +48,38 @@
                         </thead>
                         <tbody>
                             @forelse ($categories as $item)
-                            <tr>
-                                <td scope="row">{{ $loop->iteration }}</td>
-                                <td>{{ $item->name }}</td>
-                                <td>
-                                    <img
-                                    src="{{ asset('storage/' . $item->icon) }}"
-                                    class="img-fluid rounded-top"
-                                    alt="icon-category" width="60" />
-                                </td>
-                                <td>
-                                    <div class="row g-1">
-                                        <div class="col-auto">
-                                            <a href="{{ route('categories.edit', $item->category_id) }}" class="btn btn-sm rounded-3 px-3 btn-primary">Edit</a>
+                                <tr>
+                                    <td scope="row">{{ $loop->iteration }}</td>
+                                    <td>{{ $item->name }}</td>
+                                    <td>
+                                        <img src="{{ asset('storage/' . $item->icon) }}" class="img-fluid rounded-top"
+                                            alt="icon-category" width="60" />
+                                    </td>
+                                    <td>
+                                        <div class="row g-1">
+                                            <div class="col-auto">
+                                                <a href="{{ route('categories.edit', $item->category_id) }}"
+                                                    class="btn btn-sm rounded-3 px-3 btn-primary">Edit</a>
+                                            </div>
+                                            <div class="col-auto">
+                                                <form action="{{ route('categories.destroy', $item->category_id) }}"
+                                                    method="POST" class="delete-form">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit"
+                                                        class="btn btn-danger btn-sm delete-btn rounded-3 px-3"
+                                                        data-id="{{ $item->category_id }}">Delete</button>
+                                                </form>
+                                            </div>
                                         </div>
-                                        <div class="col-auto">
-                                            <form action="{{ route('categories.destroy', $item->category_id) }}" method="POST"
-                                                class="delete-form">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="btn btn-danger btn-sm delete-btn rounded-3 px-3"
-                                                    data-id="{{ $item->category_id }}">Delete</button>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
+                                    </td>
+                                </tr>
                             @empty
                                 <h5 class="text-danger">Data Kategori Kosong</h5>
                             @endforelse
                         </tbody>
                     </table>
+                    
                 </div>
 
             </div>

@@ -14,7 +14,7 @@
                     <h1> <i class="fa-solid fa-clock"></i> {{ $campaign->days_remaining }} Hari Lagi</h1>
                 </div>
                 <progress class="progress progress-info w-56" value="{{ $campaign->progress }}" max="100"></progress>
-                <h1 class="mt-2 text-2xl font-bold">Rp {{ number_format($campaign->target_amount, 0, ',', '.') }} <span
+                <h1 class="mt-2 text-2xl font-bold">Rp {{ number_format($campaign->collected_amount, 0, ',', '.') }} <span
                         class="text-sm font-medium"> Terkumpul</span></h1>
                 <a href="#" class="btn rounded-full text-white bg-primaryy mt-4 w-52 hover:bg-sky-500"
                     onclick="my_modal_3.showModal()"> Donasikan</a>

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Campaign;
 use App\Models\Category;
+use App\Models\Donasi;
+use Carbon\Carbon;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -59,7 +61,28 @@ class CampaignController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $campaign = Campaign::with('category')->find($id);
+        $campaign = Campaign::where('campaign_id', $id)->firstOrFail();
+
+        $campaign->start_date = Carbon::parse($campaign->start_date);
+        $campaign->end_date = Carbon::parse($campaign->end_date);
+
+        $campaign->days_remaining = $campaign->start_date->diffInDays($campaign->end_date);
+        $campaign->progress = $campaign->target_amount > 0
+            ? ($campaign->collected_amount / $campaign->target_amount) * 100
+            : 0;
+        $campaign->total_donations = Donasi::where('campaign_id', $campaign->campaign_id)
+            ->where('status', 'completed')->count();
+
+        $donatur = $campaign->donatur = Donasi::where('campaign_id', $campaign->campaign_id)
+            ->where('status', 'completed')
+            ->with('user')
+            ->paginate(5)
+            ->through(function ($donasi) {
+                $donasi->days_ago = Carbon::parse($donasi->created_at)->diffInDays(Carbon::now());
+                return $donasi;
+            });
+        return view('admin.campaign.detail', compact('campaign', 'donatur'));
     }
 
     /**
@@ -107,7 +130,7 @@ class CampaignController extends Controller
                 Storage::disk('public')->delete($campaign->image_path);
             }
         }
-        $validated['status'] = $request->input('status') === 'on' ? 1 : 0;
+        $validatedData['status'] = $request->input('status') === 'on' ? 1 : 0;
         // Perbarui campaign dengan data yang tervalidasi
         $campaign->update($validatedData);
 
