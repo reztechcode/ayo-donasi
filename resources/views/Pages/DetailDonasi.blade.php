@@ -7,7 +7,7 @@
 
             {{-- Mobile Rincian Dana --}}
             <div class="bg-slate-50 p-1 shadow mt-4 lg:hidden">
-                <h1 class="font-semibold text-md mt-3">Tak Miliki Lubang Anus, Bayi Ojol Menangis Kesakitan!</h1>
+                <h1 class="font-semibold text-md mt-3">{{ $campaign->title }}</h1>
                 <h1 class="mt-3"> {{ $campaign->created_at }}</h1>
                 <div class="flex gap-4 mt-3">
                     <h1> <i class="fa-solid fa-user"></i> {{ $campaign->total_donations }} Donatur</h1>
@@ -105,7 +105,7 @@
                     <div class="text-sm">
                         <h1>Rp {{ number_format($datadonatur->amount, 0, ',', '.') }}</h1>
                         <h1 class="text-gray-500">
-                            Oleh {{ $datadonatur->show_name == 0 ? 'Anonim' : $datadonatur->user->name ?? 'Anonim' }}
+                            Oleh: {{ $datadonatur->show_name == 0 ? 'Anonim' : $datadonatur->user->name ?? 'Anonim' }}
                             {{-- Oleh : {{ $datadonatur->user->name ?? 'Anonimus' }} . --}}
                             {{ number_format($datadonatur->days_ago, 0, ',', '.') == 0 ? 'Hari ini' : number_format($datadonatur->days_ago, 0, ',', '.') . ' Hari Yang Lalu' }}
                         </h1>
