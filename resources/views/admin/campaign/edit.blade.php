@@ -52,7 +52,7 @@
                                 <label for="category_id">Kategori</label>
                                 <select class="form-control" id="category_id" name="category_id">
                                     @foreach ($categories as $category)
-                                        <option value="{{ $category->id }}"
+                                        <option value="{{ $category->category_id }}"
                                             {{ $campaign->category_id == $category->category_id ? 'selected' : '' }}>
                                             {{ $category->name }}
                                         </option>
