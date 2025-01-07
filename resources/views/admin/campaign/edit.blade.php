@@ -36,9 +36,8 @@
                                             style="max-width: 18rem; max-height: 18rem; display: {{ $campaign->image_path ? 'block' : 'none' }};"
                                             src="{{ $campaign->image_path ? asset('storage/' . $campaign->image_path) : '' }}">
                                         <i class="fas fa-image display-4"></i>
-                                        <p class="text-center mb-1">Click To Upload Image</p>
-                                        <p class="text-center text-muted mb-2">Jpeg, Png, Jpg</p>
-                                        <button type="button" class="btn btn-dark">Browse File</button>
+                                        <p class="text-center mb-1">Click Here To Upload Image</p>
+                                        <p class="text-center text-muted mb-2">(Jpeg, Png, Jpg)</p>
                                     </div>
                                     <input type="file" id="file" class="d-none" name="image_path"
                                         onchange="previewImage(event)" />
