@@ -23,13 +23,13 @@
         </div>
         <div class="row">
             <div class="col-md-7 mt-2">
-                <h5> Statictic Campaign Per Bulan</h5>
+                <h5 class="px-3"> Statictic Per Campaign</h5>
                 <div class="card p-3">
-                    <h6>Januari</h6>
+                    <canvas id="campaignProgressChart"></canvas>
                 </div>
             </div>
             <div class="col-md-5">
-                <h5> Campaign Terbaru</h5>
+                <h5 class="px-2"> Campaign Terbaru</h5>
                 <div class="row">
                     @forelse ($campaign as $data)
                         <div class="col-md-6 mt-2">
@@ -42,7 +42,7 @@
                                         {{-- <h1> {{ $data->category->title}}</h1> --}}
                                         <div class="d-flex justify-content-between mb-1">
                                             <h6>Rp. {{ number_format($data->collected_amount, 0, ',', '.') }}</h6>
-                                            <h6>{{ $data->total_donations }} Orang</h6>
+                                            <h6 class="text-sm">{{ $data->total_donations }} Donatur</h6>
                                         </div>
                                         @php
                                             $progress =
@@ -58,16 +58,58 @@
                                         </div>
                                     </div>
                                 </div>
-
                             </a>
                         </div>
-
                     @empty
                     @endforelse
                 </div>
-
             </div>
-
         </div>
     </div>
+    @push('js')
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script>
+            fetch('/admin/statistics')
+                .then(response => response.json())
+                .then(data => {
+                    const labels = data.campaign_progress.map(item => item.title);
+                    const progressData = data.campaign_progress.map(item => item.progress_percentage);
+
+                    const ctx = document.getElementById('campaignProgressChart').getContext('2d');
+                    const campaignProgressChart = new Chart(ctx, {
+                        type: 'bar',
+                        data: {
+                            labels: labels, // Campaign titles
+                            datasets: [{
+                                label: 'Progress (%)',
+                                data: progressData, // Progress percentages
+                                backgroundColor: 'rgba(86, 194, 252, 0.2)',
+                                borderColor:'#31adf5',
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                y: {
+                                    beginAtZero: true,
+                                    max: 100
+                                }
+                            },
+                            animations: {
+                                tension: {
+                                    duration: 1000,
+                                    easing: 'linear',
+                                    from: 1,
+                                    to: 0,
+                                    loop: true
+                                }
+                            },
+                        }
+                    });
+                })
+                .catch(error => {
+                    console.error('Error fetching campaign stats:', error);
+                });
+        </script>
+    @endpush
 @endsection

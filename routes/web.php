@@ -25,7 +25,8 @@ Route::prefix('admin')->middleware(['admin'])->group(function () {
     Route::resource('userman', UsermanController::class);
     Route::resource('categories', CategoryController::class);
     Route::resource('campaigns', CampaignController::class);
-    Route::resource('dashboard', DashboardController::class);
+    Route::get('dashboard', [DashboardController::class, 'index']);
+    Route::get('statistics', [DashboardController::class, 'campaignStats']);
 });
 
 // Proses Donasi
