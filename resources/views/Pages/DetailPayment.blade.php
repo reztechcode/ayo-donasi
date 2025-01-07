@@ -46,7 +46,9 @@
                     <tr>
                         <th class="pr-4">Nama Donatur</th>
                         <td class="pr-4">:</td>
-                        <td>{{ $transaction->donation->show_name == 0 ? 'Anonim' : $transaction->user->name  }}</td>
+                        <td>
+                            {{ $transaction->donation->show_name == 0 ? 'Anonim' : $transaction->user->name ?? 'Anonim'  }}
+                        </td>
                     </tr>
                     <tr>
                         <th class="pr-4">Nominal</th>

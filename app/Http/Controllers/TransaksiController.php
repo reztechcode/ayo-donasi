@@ -53,9 +53,9 @@ class TransaksiController extends Controller
             "item_details" => array(
                 [
                     "id" => uniqid(),
-                    "name" => "Donasi- " . $campaign->name,
+                    "name" => "Donasi- " . $campaign->title,
                     "quantity" => 1,
-                    "price" => $transaksi->gross_amount,
+                    "price" => $donation->amount,
                 ]
             ),
             'customer_details' => [
