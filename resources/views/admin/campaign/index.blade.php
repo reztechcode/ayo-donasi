@@ -92,6 +92,7 @@
                             @endforelse
                         </tbody>
                     </table>
+                    {{ $campaigns->links('pagination::bootstrap-5') }}
                 </div>
 
             </div>
