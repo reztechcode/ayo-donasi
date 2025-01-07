@@ -1,3 +1,48 @@
+ /* Target the entire page's scrollbar */
+ ::-webkit-scrollbar {
+    width: 10px;
+    /* Width of the scrollbar */
+}
+
+::-webkit-scrollbar-track {
+    background: #f0f0f0;
+    /* Track background color */
+    border-radius: 17px;
+    /* Rounded corners */
+}
+
+::-webkit-scrollbar-thumb {
+    background: #9fcae3;
+    /* Color of the scrollbar thumb */
+    border-radius: 50px;
+    /* Rounded corners */
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #5ba9d1; /* Warna thumb saat hover */
+}
+
+/* Firefox-specific scrollbar customization */
+* {
+    scrollbar-width: thin;
+    /* Set scrollbar width to thin */
+    scrollbar-color: #6fc5f1 #f0f0f0;
+    /* Thumb color and track color */
+}
+
+.carousel-item {
+    display: none;
+}
+
+.owl-carousel .owl-item {
+    box-shadow: none;
+    /* Menghapus shadow */
+}
+
+.carousel-item-visible {
+    display: block;
+}
+
 .custom-container {
     background-color: #ffffff;
     border: 1px solid #e0e0e0;
@@ -106,3 +151,4 @@
         margin-bottom: 6px;
     }
 }
+

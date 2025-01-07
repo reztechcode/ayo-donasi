@@ -15,6 +15,10 @@
                 class=" hover:border-b-2 hover:border-sky-500 hover:rounded-full py-2 px-4 font-medium {{ Request::is('tentang-kami') ? 'bg-slate-50 text-sky-950 rounded-full' : '' }}">
                 Tentang Kami
             </a>
+            <a href="{{ url('selengkapnya') }}"
+                class=" hover:border-b-2 hover:border-sky-500 hover:rounded-full py-2 px-4 font-medium {{ Request::is('selengkapnya') ? 'bg-slate-50 text-sky-950 rounded-full' : '' }}">
+                Donasi
+            </a>
             @auth
                 
             @endauth
@@ -35,12 +39,12 @@
         @else
             <div class="space-x-3 hidden md:flex">
                 <a href="/donasi/history"
-                    class=" py-2 px-4 w-32 text-center text-sm   rounded-full font-medium {{ Request::is('donasi/history') ? 'bg-slate-200 text-sky-950 rounded-full' : '' }} " >
-                    Donasiku <i class="fa-solid fa-hand-holding-heart text-lg"></i>
+                    class=" py-2 px-3 text-center text-sm shadow-md   rounded-full font-medium {{ Request::is('donasi/history') ? 'bg-slate-200 text-sky-950 rounded-full' : '' }} " >
+                     <i class="fa-solid fa-hand-holding-heart text-lg"></i>
                 </a>
                 <a href="{{ url('profile') }}"
-                    class=" hover:border-b-2 hover:border-sky-500 hover:rounded-full py-2 px-4 {{ Request::is('profile') ? 'bg-slate-200 text-sky-950 rounded-full' : '' }}">
-                    Profile  <i class="fa-solid fa-users-gear text-md"></i>
+                    class=" hover:border-b-2 shadow-md hover:border-sky-500 rounded-full py-2 px-4 {{ Request::is('profile') ? 'bg-slate-200 text-sky-950 rounded-full' : '' }}">
+                    <i class="fa-solid fa-user text-lg"></i>
                 </a>
             </div>
         @endif

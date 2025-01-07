@@ -40,62 +40,43 @@
             <a href="{{ url('selengkapnya') }}"
                 class="bg-primaryy lg:py-2 lg:px-7 py-1 px-4 text-md text-white rounded-full"> Lihat Lainnya</a>
         </div>
-        <div id="splide" class="splide mt-7">
-            <div class="splide__track">
-                <ul class="splide__list">
-                    @foreach ($campaign as $item)
-                        <li class="splide__slide shadow-none">
-                            <a href="{{ url('donasi/detail/' . $item->slug )  }}">
-                                <div class="card bg-slate-100 shadow-xl mb-6  lg:h-auto h-auto">
-                                    <img src="{{ asset('storage/' . $item->image_path) }}" alt="Tidak Ada Image"
-                                        class="rounded-t-3xl lg:h-60 h-40">
-                                    <div class="p-4">
-                                        <h1
-                                            class="font-semibold lg:text-lg  text-sm  overflow-hidden text-ellipsis whitespace-nowrap">
-                                            {{ $item->title }} </h1>
-                                        <h1 class="text-sm mt-4">Dana Terkumpul</h1>
-                                        @php
-                                            $progress =
-                                                $item->target_amount > 0
-                                                    ? ($item->collected_amount / $item->target_amount) * 100
-                                                    : 0;
-                                        @endphp
-                                        <progress class="progress progress-info w-full" value="{{ $progress }}"
-                                            max="100"></progress>
+        <div class="overflow-x-auto">
+            <div class="inline-flex gap-4">
+                @foreach ($campaign as $item)
+                    <div class="card bg-slate-100 shadow-xl mb-6  lg:h-auto h-aut lg:w-96 w-80 mt-3">
+                        <a href="{{ url('donasi/detail/' . $item->slug) }}">
+                            <img src="{{ asset('storage/' . $item->image_path) }}" alt="Tidak Ada Image"
+                                class="rounded-t-3xl w-full lg:h-60 h-40">
+                            <div class="p-4">
+                                <h1
+                                    class="font-semibold lg:text-lg  text-sm  overflow-hidden text-ellipsis whitespace-nowrap">
+                                    {{ $item->title }} </h1>
+                                <h1 class="text-sm mt-4">Dana Terkumpul</h1>
+                                @php
+                                    $progress =
+                                        $item->target_amount > 0
+                                            ? ($item->collected_amount / $item->target_amount) * 100
+                                            : 0;
+                                @endphp
+                                <progress class="progress progress-info w-full" value="{{ $progress }}"
+                                    max="100"></progress>
 
-                                        <div class="flex justify-between ">
-                                            <h1>Rp {{ number_format($item->collected_amount, 0, ',', '.') }}</h1>
-                                            <h1>Rp {{ number_format($item->target_amount, 0, ',', '.') }}</h1>
-                                        </div>
-                                        <div class="flex justify-between lg:mt-8 mt-4 ">
-                                            <h1 class="font-bold text-sm">{{ $item->total_donations }} Donatur</h1>
-                                            <h1 class="font-bold text-sm">{{ $item->days_remaining }} Hari Lagi</h1>
-                                        </div>
-                                    </div>
+                                <div class="flex justify-between ">
+                                    <h1>Rp {{ number_format($item->collected_amount, 0, ',', '.') }}</h1>
+                                    <h1>Rp {{ number_format($item->target_amount, 0, ',', '.') }}</h1>
                                 </div>
-                            </a>
-                        </li>
-                    @endforeach
+                                <div class="flex justify-between lg:mt-8 mt-4 ">
+                                    <h1 class="font-bold text-sm">{{ $item->total_donations }} Donatur</h1>
+                                    <h1 class="font-bold text-sm">{{ $item->days_remaining }} Hari Lagi</h1>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                @endforeach
 
-                </ul>
             </div>
         </div>
     </div>
-
-    <style>
-        .carousel-item {
-            display: none;
-        }
-
-        .owl-carousel .owl-item {
-            box-shadow: none;
-            /* Menghapus shadow */
-        }
-
-        .carousel-item-visible {
-            display: block;
-        }
-    </style>
 
 
 
