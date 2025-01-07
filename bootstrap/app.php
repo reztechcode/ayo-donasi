@@ -6,17 +6,23 @@ use Illuminate\Foundation\Configuration\Middleware;
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
-        web: __DIR__.'/../routes/web.php',
-        commands: __DIR__.'/../routes/console.php',
+        web: __DIR__ . '/../routes/web.php',
+        commands: __DIR__ . '/../routes/console.php',
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->alias([
             'admin' => \App\Http\Middleware\isAdmin::class,
         ]);
+        $middleware->web(append: [
+            \Fahlisaputra\Minify\Middleware\MinifyHtml::class,
+            \Fahlisaputra\Minify\Middleware\MinifyCss::class,
+            \Fahlisaputra\Minify\Middleware\MinifyJavascript::class,
+        ]);
         $middleware->validateCsrfTokens(except: [
             'donasi*',
             // '/donasi/payment/callback', // <-- exclude this route
+           
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
