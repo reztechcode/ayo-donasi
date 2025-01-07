@@ -1,4 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.app', ['title' => $campaign->title])
+@push('head')
+<meta property="og:image" content="{{ asset('storage/' . $campaign->image_path) }}" />
+@endpush
 @section('content')
     <h1 class="font-bold text-xl mt-10 p-4 lg:flex hidden">{{ $campaign->title }}</h1>
     <div class="flex gap-10 mt-5 ">

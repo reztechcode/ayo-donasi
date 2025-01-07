@@ -16,7 +16,7 @@ class DashboardController extends Controller
     {
 
         $donasi = Campaign::all();
-        $penggalangan = Transaksi::where('status', 'completed')->get();
+        $totalDonatur = Transaksi::where('status', 'completed')->count();
         $category = Category::all();
         $campaign = Campaign::with('category')->orderBy('created_at', 'desc')->limit(4)->get()->map(function ($item) {
             $item->start_date = Carbon::parse($item->start_date);
@@ -27,7 +27,7 @@ class DashboardController extends Controller
 
             return $item;
         });
-        return view('admin.Dashboard', compact('donasi', 'penggalangan', 'category', 'campaign'));
+        return view('admin.Dashboard', compact('donasi', 'totalDonatur', 'category', 'campaign'));
     }
 
     public function campaignStats()

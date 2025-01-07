@@ -10,8 +10,8 @@
             </div>
             <div class="col-md-4">
                 <div class="card p-4">
-                    <h3 class="text-center ">Penggalangan Dana</h3>
-                    <h1 class="text-center"> {{ count($penggalangan) }}</h1>
+                    <h3 class="text-center ">Total Donatur</h3>
+                    <h1 class="text-center"> {{ $totalDonatur }}</h1>
                 </div>
             </div>
             <div class="col-md-4">
