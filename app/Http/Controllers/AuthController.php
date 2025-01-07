@@ -37,25 +37,13 @@ class AuthController extends Controller
             ]
         );
         
-
-        // Buat pengguna baru
         $user = User::create([
             'name' => $validatedData['name'],
             'email' => $validatedData['email'],
             'password' => Hash::make($validatedData['password']),
         ]);
 
-        // Login otomatis setelah registrasi
-        Auth::login($user);
-
-        // Alihkan ke halaman sesuai peran pengguna
-        if ($user->role == 'admin') {
-            return redirect()->to('/admin/dashboard');
-        } elseif ($user->role == 'user') {
-            return redirect()->to('/auth/login');
-        }
-
-        return redirect()->to('/'); // Default redirect jika peran tidak dikenali
+        return redirect()->to('/auth/login');
     }
     public function authenticate(Request $request): RedirectResponse
     {

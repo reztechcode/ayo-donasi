@@ -18,8 +18,8 @@
                         class="text-sm font-medium"> Terkumpul</span></h1>
                 <a href="#" class="btn rounded-full text-white bg-primaryy mt-4 w-52 hover:bg-sky-500"
                     onclick="my_modal_3.showModal()"> Donasikan</a>
-                <a href="#" class="btn rounded-full text-white bg-sky-900 mt-4 hover:bg-blue-950 " onclick="modalshare.showModal()"> Bagikan <i
-                        class="fa-solid fa-share-nodes text-lg"></i></a>
+                <a href="#" class="btn rounded-full text-white bg-sky-900 mt-4 hover:bg-blue-950 "
+                    onclick="modalshare.showModal()"> Bagikan <i class="fa-solid fa-share-nodes text-lg"></i></a>
             </div>
             <div class="">
                 <h1 class="font-bold mt-4 mb-2"> Deskripsi </h1>
@@ -39,8 +39,8 @@
                 max="100"></progress>
             <a href="#" class="btn rounded-full text-white bg-primaryy mt-4 w-52 hover:bg-sky-500"
                 onclick="my_modal_3.showModal()"> Donasikan</a>
-            <a href="#" class="btn rounded-full text-white bg-sky-900 mt-4 hover:bg-blue-950 " onclick="modalshare.showModal()"> Bagikan <i
-                    class="fa-solid fa-share-nodes text-lg"></i></a>
+            <a href="#" class="btn rounded-full text-white bg-sky-900 mt-4 hover:bg-blue-950 "
+                onclick="modalshare.showModal()"> Bagikan <i class="fa-solid fa-share-nodes text-lg"></i></a>
             <h1 class="mt-6 font-semibold"> Donatur : </h1>
             @forelse ($donatur->slice(0, 5) as $data)
                 <div class="flex gap-5 mt-4">
@@ -48,7 +48,7 @@
                     <div class="text-sm">
                         <h1>Rp {{ number_format($data->amount, 0, ',', '.') }}</h1>
                         <h1 class="text-gray-500">
-                            Oleh : {{ $data->name ?? 'Anonimus' }} .
+                            Oleh: {{ $data->show_name == 0 ? 'Anonim' : $data->user->name ?? 'Anonim' }}
                             {{ number_format($data->days_ago, 0, ',', '.') == 0 ? 'Hari ini' : number_format($data->days_ago, 0, ',', '.') . ' Hari Yang Lalu' }}
                         </h1>
 
