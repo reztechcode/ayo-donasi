@@ -5,8 +5,7 @@
             <div class="w-full lg:w-6/12 px-4 mb-8 lg:mb-0">
                 <h3 class="text-xl font-semibold text-black mb-4">Tentang Kami</h3>
                 <p class="text-sky-950 text-sm leading-relaxed">
-                    Kami menyediakan berbagai informasi tentang film favorit Anda, lengkap dengan ulasan dan rekomendasi
-                    terbaik.
+                    Di AyoDonasi, kami berkomitmen untuk memberikan dukungan yang transparan dan bertanggung jawab. Setiap kontribusi Anda membawa harapan baru bagi yang membutuhkan.
                 </p>
                 <p class="mt-4 text-sky-950 text-sm lg:hidden block">© 2025 AyoDonasi. All rights reserved.</p>
 
