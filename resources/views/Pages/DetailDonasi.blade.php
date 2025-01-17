@@ -1,4 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.app', ['title' => $campaign->title])
+@push('head')
+<meta property="og:image" content="{{ asset('storage/' . $campaign->image_path) }}" />
+@endpush
 @section('content')
     <h1 class="font-bold text-xl mt-10 p-4 lg:flex hidden">{{ $campaign->title }}</h1>
     <div class="flex gap-10 mt-5 ">
@@ -18,8 +21,8 @@
                         class="text-sm font-medium"> Terkumpul</span></h1>
                 <a href="#" class="btn rounded-full text-white bg-primaryy mt-4 w-52 hover:bg-sky-500"
                     onclick="my_modal_3.showModal()"> Donasikan</a>
-                <a href="#" class="btn rounded-full text-white bg-sky-900 mt-4 hover:bg-blue-950 " onclick="modalshare.showModal()"> Bagikan <i
-                        class="fa-solid fa-share-nodes text-lg"></i></a>
+                <a href="#" class="btn rounded-full text-white bg-sky-900 mt-4 hover:bg-blue-950 "
+                    onclick="modalshare.showModal()"> Bagikan <i class="fa-solid fa-share-nodes text-lg"></i></a>
             </div>
             <div class="">
                 <h1 class="font-bold mt-4 mb-2"> Deskripsi </h1>
@@ -39,8 +42,8 @@
                 max="100"></progress>
             <a href="#" class="btn rounded-full text-white bg-primaryy mt-4 w-52 hover:bg-sky-500"
                 onclick="my_modal_3.showModal()"> Donasikan</a>
-            <a href="#" class="btn rounded-full text-white bg-sky-900 mt-4 hover:bg-blue-950 " onclick="modalshare.showModal()"> Bagikan <i
-                    class="fa-solid fa-share-nodes text-lg"></i></a>
+            <a href="#" class="btn rounded-full text-white bg-sky-900 mt-4 hover:bg-blue-950 "
+                onclick="modalshare.showModal()"> Bagikan <i class="fa-solid fa-share-nodes text-lg"></i></a>
             <h1 class="mt-6 font-semibold"> Donatur : </h1>
             @forelse ($donatur->slice(0, 5) as $data)
                 <div class="flex gap-5 mt-4">

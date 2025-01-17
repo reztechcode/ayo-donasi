@@ -3,7 +3,6 @@
 
 <head>
     <meta charset="utf-8">
-    <link rel="shortcut icon" type="image/png" href="{{ asset('image/logoicon.png') }}" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     <!-- Owl Carousel CSS -->
@@ -17,6 +16,13 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     @vite('resources/css/app.css')
     <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}">
+    <title>{{ $title ?? 'Ayo Donasi - Platform Donasi Online' }}</title>
+    <meta name="keywords" content="Ayo Donasi, platform donasi online, donasi, donasi aman, sistem pembayaran, Midtrans, Laravel, aplikasi donasi, pemrograman web framework, berbagi kebaikan, donasi otomatis" />
+    <meta property="og:description" content="Ayo Donasi adalah platform donasi online yang memudahkan Anda untuk berdonasi dengan sistem verifikasi otomatis menggunakan Midtrans." />
+    <meta property="og:url" content="{{ request()->url() }}" />
+    <link rel="shortcut icon" type="image/png" href="{{ asset('image/logoicon.png') }}" />
+    @stack('head')
+
     {{-- @vite('resources/js/app.js') --}}
 </head>
 
