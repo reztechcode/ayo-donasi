@@ -69,7 +69,9 @@
                         @endforelse
                     </div>
                 </div>
-
+                <div class="form-group mt-3">
+                    <a href="{{ route('campaigns.index') }}" class="btn btn-warning">Kembali</a>
+                </div>
             </div>
         </div>
     </div>
