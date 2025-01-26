@@ -10,7 +10,7 @@
                 if (form) {
                     Swal.fire({
                         title: 'Apakah Yakin?',
-                        text: 'Link Tidak Dapat Dipulihkan setelah DIhapus!',
+                        text: 'Data Tidak Dapat Dipulihkan setelah Dihapus!',
                         icon: 'warning',
                         showCancelButton: true,
                         confirmButtonColor: '#3085d6',
