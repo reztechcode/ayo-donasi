@@ -32,30 +32,17 @@ class DonasiController extends Controller
 
     public function Selengkapnya()
     {
-        $campaigns = Campaign::all()->map(function ($item) {
-            $item->start_date = Carbon::parse($item->start_date);
-            $item->end_date = Carbon::parse($item->end_date);
-
-            // diffInDays menghitung selisih dalam hari antara dua tanggal.
-            $item->days_remaining = $item->start_date->diffInDays($item->end_date);
-            $item->progress = $item->target_amount > 0 ? ($item->collected_amount / $item->target_amount) * 100 : 0;
-            $item->total_donations = Donasi::where('campaign_id', $item->campaign_id)
-                ->where('status', 'completed')->count();
-
-            return $item;
-        });
-
         // Ambil input pencarian
         $search = request()->input('q');
 
         // Jika ada pencarian, filter campaign berdasarkan title atau campaign_id
         if ($search) {
-            $campaign = Campaign::where('title', 'like', '%' . $search . '%')
+            $campaigns = Campaign::where('title', 'like', '%' . $search . '%')
                 ->orWhere('campaign_id', 'like', '%' . $search . '%')
                 ->paginate(20);
 
             // Mapping data tambahan untuk pencarian
-            $campaign->map(function ($item) {
+            $campaigns->map(function ($item) {
                 $item->start_date = Carbon::parse($item->start_date);
                 $item->end_date = Carbon::parse($item->end_date);
                 $item->days_remaining = $item->start_date->diffInDays($item->end_date);
@@ -66,7 +53,7 @@ class DonasiController extends Controller
             });
         } else {
             // Jika tidak ada pencarian, tampilkan semua campaign
-            $campaign = Campaign::paginate(20);
+            $campaigns = Campaign::paginate(20);
         }
 
         // Kembalikan data ke view
