@@ -86,7 +86,7 @@
                     </div>
                     <div class="form-group mt-3">
                         <button type="submit" class="btn btn-primary">Simpan</button>
-                        <a href="{{ route('categories.index') }}" class="btn btn-warning">Kembali</a>
+                        <a href="{{ route('campaigns.index') }}" class="btn btn-warning">Kembali</a>
                     </div>
                 </form>
             </div>

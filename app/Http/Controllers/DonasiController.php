@@ -36,7 +36,9 @@ class DonasiController extends Controller
             $campaigns = Campaign::where('title', 'like', '%' . $search . '%')
                 ->orWhere('campaign_id', 'like', '%' . $search . '%')
                 ->paginate(20);
-            $campaigns->map(function ($item) {
+
+            // Mapping data tambahan untuk pencarian
+            $campaign->map(function ($item) {
                 $item->start_date = Carbon::parse($item->start_date);
                 $item->end_date = Carbon::parse($item->end_date);
                 $item->days_remaining = $item->start_date->diffInDays($item->end_date);
@@ -46,6 +48,7 @@ class DonasiController extends Controller
                 return $item;
             });
         } else {
+            // Jika tidak ada pencarian, tampilkan semua campaign
             $campaign = Campaign::paginate(20);
         }
         return view('Pages.Selengkapnya', compact('campaigns', 'search'));
