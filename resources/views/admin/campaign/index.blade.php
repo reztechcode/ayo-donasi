@@ -44,7 +44,7 @@
                                 <th scope="col">No</th>
                                 <th scope="col">Image</th>
                                 <th scope="col">Nama Campaign</th>
-                                <th scope="col">Tercapai/Target</th>
+                                <th scope="col">Target/Tercapai</th>
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
