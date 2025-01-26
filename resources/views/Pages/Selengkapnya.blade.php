@@ -8,7 +8,6 @@
                     id="floating_outlined" type="text" value="{{ $search ?? '' }}" />
                 <div class="absolute top-3 right-8">
                     <button type="submit"> <i class="fa-solid fa-magnifying-glass text-2xl"></i></button>
-
                 </div>
             </div>
 

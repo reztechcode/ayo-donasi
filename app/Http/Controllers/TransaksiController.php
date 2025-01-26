@@ -37,6 +37,7 @@ class TransaksiController extends Controller
             $user = Auth::user();
             $validatedData['user_id'] = $user->user_id;
         }
+
         $validatedData['show_name'] = $request->input('show_name') === 'on' ? 1 : 0;
         $donation = Donasi::create($validatedData);
         $transaksi = Transaksi::create([
@@ -44,11 +45,12 @@ class TransaksiController extends Controller
             'midtrans_order_id' => 'ORD-' . random_int(10000, 99999),
             'gross_amount' => $donation->amount,
         ]);
+
         $campaign = Campaign::find($request->campaign_id);
         $params = [
             'transaction_details' => [
-                'order_id' => $transaksi->midtrans_order_id, // Unique order id
-                'gross_amount' => $transaksi->gross_amount, // Total harga
+                'order_id' => $transaksi->midtrans_order_id,
+                'gross_amount' => $transaksi->gross_amount,
             ],
             "item_details" => array(
                 [
@@ -79,8 +81,9 @@ class TransaksiController extends Controller
         $trasaction = Transaksi::with('donation')->find($id);
         return response()->json($trasaction);
     }
+
     public function handleCallback(Request $request)
-    {
+    { 
         $serverKey = config('midtrans.server_key');
         $hashedKey = hash('sha512', $request->order_id . $request->status_code . $request->gross_amount . $serverKey);
 

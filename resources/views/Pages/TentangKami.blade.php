@@ -22,7 +22,5 @@
                 <h1> @ayodonasi</h1>
             </div>
         </div>
-
-
     </div>
 @endsection

@@ -26,7 +26,7 @@
 
         @if (!Auth::check())
             <!-- Tombol Login dan Daftar -->
-            <div class="space-x-3 hidden md:flex">
+            <div class="space-x-3 ">
                 <a href="{{ url('/auth/login') }}"
                     class="py-2 px-4 text-md w-24 text-center text-white rounded-full font-semibold {{ Request::is('auth/login') ? 'bg-slate-200 text-sky-950 rounded-full' : '' }}">
                     Login
@@ -37,7 +37,7 @@
                 </a>
             </div>
         @else
-            <div class="space-x-3 hidden md:flex">
+            <div class="space-x-3 ">
                 <a href="/donasi/history"
                     class=" py-2 px-3 text-center text-sm shadow-md   rounded-full font-medium {{ Request::is('donasi/history') ? 'bg-slate-200 text-sky-950 rounded-full' : '' }} " >
                      <i class="fa-solid fa-hand-holding-heart text-lg"></i>

@@ -20,6 +20,8 @@ Route::get('/profile', [DonasiController::class, 'ProfileDonasi']);
 Route::get('/donasi/detail/{slug}', [DonasiController::class, 'DetailDonasi']);
 Route::get('donasi/payment/{id}', [DonasiController::class, 'DetailPayment']);
 Route::get('donasi/history', [DonasiController::class, 'HistoryDonasi']);
+Route::post('donasi/payment', [TransaksiController::class, 'berDonasi']);
+Route::post('/donasi/payment/callback', [TransaksiController::class, 'handleCallback']);
 
 Route::prefix('admin')->middleware(['admin'])->group(function () {
     Route::resource('userman', UsermanController::class);
@@ -29,10 +31,6 @@ Route::prefix('admin')->middleware(['admin'])->group(function () {
     Route::get('statistics', [DashboardController::class, 'campaignStats']);
 });
 
-// Proses Donasi
-Route::post('donasi/payment', [TransaksiController::class, 'berDonasi']);
-Route::post('/donasi/payment/callback', [TransaksiController::class, 'handleCallback']);
-// Proses Donasi
 Route::middleware(['guest'])->group(function () {
     Route::get('auth/login', [AuthController::class, 'showLogin'])->name('login');
     Route::post('auth/login', [AuthController::class, 'authenticate']);
@@ -40,7 +38,3 @@ Route::middleware(['guest'])->group(function () {
     Route::post('auth/register', [AuthController::class, 'register']);
 });
 Route::get('logout', [AuthController::class, 'logout'])->middleware(['auth']);
-// Route::get('/register', [AuthController::class, 'showRegister']);
-
-
-// Route::get('donasi/payment/{id}', [TransaksiController::class, 'detailTransaksi']);
