@@ -51,7 +51,7 @@
                     <div class="text-sm">
                         <h1>Rp {{ number_format($data->amount, 0, ',', '.') }}</h1>
                         <h1 class="text-gray-500">
-                            Oleh: {{ $data->show_name == 0 ? 'Anonim' : $data->user->name ?? 'Anonim' }}
+                            Oleh : {{  $data->show_name == 0 ? 'Anonim' : $data->user->name ?? 'Anonim' }} .
                             {{ number_format($data->days_ago, 0, ',', '.') == 0 ? 'Hari ini' : number_format($data->days_ago, 0, ',', '.') . ' Hari Yang Lalu' }}
                         </h1>
 

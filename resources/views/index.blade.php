@@ -73,11 +73,26 @@
                         </a>
                     </div>
                 @endforeach
+            </div>
+        </div>
+
+    </div>
+    <div class="lg:pr-28 lg:pl-28  mt-16">
+        <div class="bg-slate-100 rounded-3xl shadow-md p-10">
+            <div class="text-center">
+                <h1 class="font-extrabold lg:text-3xl text-lg text-black"> Ayo Berbagi Kebaikan ! </h1>
+                <p class="font-light text-gray-700 mt-5">Mari berbagi, karena kepedulian kita adalah harapan bagi yang membutuhkan.  </p>
+                <a href="/selengkapnya">
+                    <div class="flex justify-center mt-5">
+                        <div class="bg-primaryy w-60 py-4 text-white rounded-3xl font-semibold">
+                            <h1> Lihat Semua Donasi <i class="fa-solid fa-arrow-right"></i></h1>
+                        </div>
+                    </div>
+                </a>
 
             </div>
         </div>
     </div>
-
 
 
     <script>

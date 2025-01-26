@@ -60,7 +60,7 @@
             </div>
 
             <button type="submit"
-                class="w-full text-white font-medium py-2 px-4 rounded-3xl hover:bg-sky-500 focus:outline-none focus:ring-2 focus:ring-blue-500 bg-primaryy">Login</button>
+                class="w-full text-white font-medium py-2 px-4 rounded-3xl hover:bg-sky-500 focus:outline-none focus:ring-2 focus:ring-blue-500 bg-primaryy">Register</button>
         </form>
 
         <div class="text-center mt-6">
