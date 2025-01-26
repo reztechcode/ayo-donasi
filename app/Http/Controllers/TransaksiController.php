@@ -59,14 +59,10 @@ class TransaksiController extends Controller
                 ]
             ),
             'customer_details' => [
-                // 'first_name' => 'Guest',
-                // 'email' => null,
-                // 'phone' => null,
                 'first_name' => Auth::user()->name ?? 'Guest',
                 'email' => Auth::user()->email ?? null,
                 'phone' => Auth::user()->phone ?? null,
             ],
-            // 'finish_redirect_url' => 'http://localhost:8000/finish'
         ];
 
         $snapToken = [
@@ -83,41 +79,6 @@ class TransaksiController extends Controller
         $trasaction = Transaksi::with('donation')->find($id);
         return response()->json($trasaction);
     }
-
-    // public function handleCallback(Request $request)
-    // {
-    //     $serverKey = config('midtrans.server_key');
-    //     $hashedKey = hash('sha512', $request->order_id . $request->status_code . $request->gross_amount . $serverKey);
-
-    //     if ($hashedKey !== $request->signature_key) {
-    //         return response()->json(['message' => 'Invalid signature key'], 403);
-    //     }
-
-    //     $transactionStatus = $request->transaction_status;
-    //     $orderId = $request->order_id;
-    //     $transaction = Transaksi::where('midtrans_order_id', $orderId)->first();
-    //     $donation = Donasi::find($transaction->donation_id);
-    //     if (!$transaction) {
-    //         return response()->json(['message' => 'Order not found'], 404);
-    //     }
-
-    //     // Perbarui status transaksi berdasarkan notifikasi
-    //     if ($transactionStatus === 'capture' || $transactionStatus === 'settlement') {
-    //         $transaction->status = 'completed';
-    //         $donation->status = 'completed';
-    //     } elseif ($transactionStatus === 'pending') {
-    //         $transaction->status = 'pending';
-    //         $donation->status = 'pending';
-    //     } elseif ($transactionStatus === 'deny' || $transactionStatus === 'cancel' || $transactionStatus === 'expire') {
-    //         $transaction->status = 'failed';
-    //         $donation->status = 'failed';
-    //     }
-    //     $transaction->save();
-    //     $donation->save();
-
-    //     return response()->json(['message' => 'Callback received successfully']);
-    // }
-
     public function handleCallback(Request $request)
     {
         $serverKey = config('midtrans.server_key');
