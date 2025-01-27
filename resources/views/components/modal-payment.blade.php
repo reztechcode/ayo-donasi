@@ -25,7 +25,7 @@
                     {{-- <div class="form-control w-52"> --}}
                     <label class="label cursor-pointer">
 
-                    </label>
+                    </label>    
                     {{-- <input type="checkbox" class="toggle border-primaryy border-2 bg-primaryy hover:bg-primaryy"
                         name="show_name" checked="checked" /> --}}
                     <input type="checkbox" class="toggle toggle-blue" checked="checked" name="show_name" />
